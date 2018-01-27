@@ -28,7 +28,10 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
-	
+
+	public Player GetPlayer(int pNo) {
+		return pNo == 1 ? P1 : P2;
+	}
 	public void StartGame() {
 		startTime = Time.time;
 	}

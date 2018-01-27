@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50279886330727342}
   - component: {fileID: 58431174463040870}
   m_Layer: 0
-  m_Name: shit
+  m_Name: Shit
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,11 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e342f8edcc8dcd94b9b511b7cb774e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 6
-  error: 0.1
-  movingSpeed: 0
-  flyingSpeed: 0
-  rotatingSpeed: 0
+  FoodEnum: 0
+  MoveSpeed: 4
+  RotateSpeed: 3
+  ShootSpeed: 6
 --- !u!212 &212359972305976316
 SpriteRenderer:
   m_ObjectHideFlags: 1

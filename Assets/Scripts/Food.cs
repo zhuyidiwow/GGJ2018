@@ -3,54 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Food : MonoBehaviour {
-    [SerializeField] private int id;
-    [SerializeField] private float error;
-    private Transform destination;
+    public enum EFood {
+        SHIT,
+        CARROT
+    }
 
-    [SerializeField] private float movingSpeed;
+    public EFood FoodEnum;
+    
+    public float MoveSpeed;
+    public float RotateSpeed;
+    public float ShootSpeed;
 
-    [SerializeField] private float flyingSpeed;
-
-    [SerializeField] private float rotatingSpeed;
-
+    // 0: start
+    // 1: fly to player
+    // 2: caught by player
+    // 3: fly away / drop
     private int state;
+    
     private int playerNo;
-
-//	0: start
-//	1: moving to roller
-//	2: stay in roller
-//	3: fly away
-//	4: be ate
-//	5: drop
+    private Transform destination;
     private Vector3 movingDirection;
 
     void Update() {
         switch (state) {
-            case 1: 
-                movingDirection = (destination.position - transform.position).normalized * movingSpeed * Time.deltaTime;
+            case 1:
+                // fly to player
+                movingDirection = (destination.position - transform.position).normalized * MoveSpeed * Time.deltaTime;
                 transform.Translate(movingDirection, Space.World);
-                transform.Rotate(transform.forward, rotatingSpeed, Space.World);
+                transform.Rotate(transform.forward, RotateSpeed, Space.World);
                 break;
             case 2: 
                 break;
             case 3: 
-                movingDirection = movingDirection.normalized * movingSpeed * Time.deltaTime;
+                // fly away
+                movingDirection = movingDirection.normalized * ShootSpeed * Time.deltaTime;
                 transform.Translate(movingDirection, Space.World);
-                transform.Rotate(transform.forward, rotatingSpeed, Space.World);
-                break;
-            default:
+                transform.Rotate(transform.forward, RotateSpeed, Space.World);
                 break;
         }
     }
 
-    public int GetID() {
-        return id;
-    }
-
     public void Initialize(Transform des, float mSpeed, float rSpeed) {
         destination = des;
-        movingSpeed = mSpeed;
-        rotatingSpeed = rSpeed;
+        MoveSpeed = mSpeed;
+        RotateSpeed = rSpeed;
         state = 1;
     }
 
@@ -86,7 +82,7 @@ public class Food : MonoBehaviour {
         return state > 2;
     }
 
-    public int GetPlayerID() {
+    public int GetPlayerNo() {
         return playerNo;
     }
 }
