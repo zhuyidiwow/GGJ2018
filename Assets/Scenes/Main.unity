@@ -144,7 +144,8 @@ MonoBehaviour:
   EPlayer: 0
   Score: 0
   ShouldReceiveInput: 1
-  InputThreshold: 0.1
+  InputThreshold: 0.5
+  Wheel: {fileID: 0}
 --- !u!212 &62127395
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19cb79836c603947b16f31d28e2ebe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 16
+  Distance: 2.75
   AngleInDeg: 0
 --- !u!212 &504875355
 SpriteRenderer:

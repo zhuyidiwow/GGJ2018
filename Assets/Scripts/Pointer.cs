@@ -25,8 +25,10 @@ public class Pointer : MonoBehaviour {
 	private void Update() {
 		
 		if (player.ShouldReceiveInput) {
-			if (GetInputMagnitude() > player.InputThreshold) {
-				AngleInDeg = GetAngle();	
+			float x = Input.GetAxis(horiAxis);
+			float y = Input.GetAxis(verAxis);
+			if (Utilities.Math.GetMagnitude(new Vector2(x, y)) > player.InputThreshold) {
+				AngleInDeg = Utilities.Math.GetAngle(x, y);	
 				Move();
 			}
 
@@ -68,24 +70,7 @@ public class Pointer : MonoBehaviour {
 		return false;
 	}
 	
-	private float GetInputMagnitude() {
-		return Mathf.Sqrt(Mathf.Pow(Input.GetAxis(verAxis), 2) + Mathf.Pow(Input.GetAxis(horiAxis), 2));
-	}
+	
 
-	// In Deg, from x axis
-	private float GetAngle() {
-		float x = Input.GetAxis(horiAxis);
-		float y = Input.GetAxis(verAxis);
-		float angle = Mathf.Atan(y / x);
-		angle = angle * Mathf.Rad2Deg; // convert to deg
-		if (x < 0 && y > 0) {
-			angle += 180f;
-		} else if (x < 0 && y < 0) {
-			angle += 180f;
-		} else if (x > 0 && y < 0) {
-			angle += 360f;
-		}
 
-		return angle;
-	}
 }
