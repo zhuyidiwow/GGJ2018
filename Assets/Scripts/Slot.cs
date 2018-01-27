@@ -20,4 +20,8 @@ public class Slot : MonoBehaviour {
 			food.transform.position = objectPos.transform.position;
 		}
 	}
+
+	public Transform GetObjectSlotTransform() {
+		return objectPos;
+	}
 }

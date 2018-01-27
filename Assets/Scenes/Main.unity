@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 212596719}
   - component: {fileID: 212596720}
+  - component: {fileID: 212596721}
   m_Layer: 0
   m_Name: Slot (1)
   m_TagString: Untagged
@@ -267,6 +268,17 @@ PolygonCollider2D:
       - {x: 1.7680861, y: 1.773106}
       - {x: 1.4798468, y: 2.0219212}
       - {x: 1.2184787, y: 2.1809745}
+--- !u!114 &212596721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 212596718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1837c90eb84c0484895a05285df6a60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &220793151
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790257898}
   - component: {fileID: 790257899}
+  - component: {fileID: 790257900}
   m_Layer: 0
   m_Name: Slot (2)
   m_TagString: Untagged
@@ -655,6 +668,17 @@ PolygonCollider2D:
       - {x: 1.7680861, y: 1.773106}
       - {x: 1.4798468, y: 2.0219212}
       - {x: 1.2184787, y: 2.1809745}
+--- !u!114 &790257900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 790257897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1837c90eb84c0484895a05285df6a60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &896533385
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1204143540}
   - component: {fileID: 1204143541}
+  - component: {fileID: 1204143542}
   m_Layer: 0
   m_Name: Slot (6)
   m_TagString: Untagged
@@ -752,6 +777,17 @@ PolygonCollider2D:
       - {x: 1.7680861, y: 1.773106}
       - {x: 1.4798468, y: 2.0219212}
       - {x: 1.2184787, y: 2.1809745}
+--- !u!114 &1204143542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1204143539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1837c90eb84c0484895a05285df6a60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1262992153
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262992154}
   - component: {fileID: 1262992155}
+  - component: {fileID: 1262992156}
   m_Layer: 0
   m_Name: Slot (3)
   m_TagString: Untagged
@@ -815,6 +852,17 @@ PolygonCollider2D:
       - {x: 1.7680861, y: 1.773106}
       - {x: 1.4798468, y: 2.0219212}
       - {x: 1.2184787, y: 2.1809745}
+--- !u!114 &1262992156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262992153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1837c90eb84c0484895a05285df6a60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1338259807
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2034740351}
   - component: {fileID: 2034740352}
+  - component: {fileID: 2034740353}
   m_Layer: 0
   m_Name: Slot (5)
   m_TagString: Untagged
@@ -934,6 +983,17 @@ PolygonCollider2D:
       - {x: 1.7680861, y: 1.773106}
       - {x: 1.4798468, y: 2.0219212}
       - {x: 1.2184787, y: 2.1809745}
+--- !u!114 &2034740353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034740350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1837c90eb84c0484895a05285df6a60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097258031
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +1031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2124860371}
   - component: {fileID: 2124860372}
+  - component: {fileID: 2124860373}
   m_Layer: 0
   m_Name: Slot (4)
   m_TagString: Untagged
@@ -1025,3 +1086,14 @@ PolygonCollider2D:
       - {x: 1.7680861, y: 1.773106}
       - {x: 1.4798468, y: 2.0219212}
       - {x: 1.2184787, y: 2.1809745}
+--- !u!114 &2124860373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2124860370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1837c90eb84c0484895a05285df6a60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

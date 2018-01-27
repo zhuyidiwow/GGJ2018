@@ -9,6 +9,16 @@ public class GameManager : MonoBehaviour {
 	private float startTime;
 	private bool isGameOver = false;
 		
+	private void Start() {
+		if (Instance == null) Instance = this;
+	}
+
+	private void Update() {
+		if (Time.time - startTime >= GameDuration) {
+			if (!isGameOver) TimeUp();		
+		}
+	}
+	
 	public void StartGame() {
 		startTime = Time.time;
 	}
@@ -21,13 +31,5 @@ public class GameManager : MonoBehaviour {
 		isGameOver = true;
 	}
 	
-	private void Start() {
-		if (Instance == null) Instance = this;
-	}
-
-	private void Update() {
-		if (Time.time - startTime >= GameDuration) {
-			if (!isGameOver) TimeUp();		
-		}
-	}
+	
 }
