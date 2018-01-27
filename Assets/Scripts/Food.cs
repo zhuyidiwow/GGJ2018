@@ -22,7 +22,7 @@ public class Food : MonoBehaviour
 //	3: fly away
 //	4: be ate
 //	5: drop
-	private Vector3 movingDerection;
+	public Vector3 MovingDirection;
 	
 	//-------------TEST-------------
 
@@ -39,27 +39,27 @@ public class Food : MonoBehaviour
 		switch (state){
 			case 1:
 			{
-				if (Vector3.Distance(transform.position, destination.position) < error)
-				{
-					state = 2;
-					break;
-				}
-				else
-				{
+//				if (Vector3.Distance(transform.position, destination.position) < error)
+//				{
+//					state = 2;
+//					break;
+//				}
+//				else
+//				{
 					trans = (destination.position - transform.position).normalized * movingSpeed * Time.deltaTime;
 					transform.Translate(trans,Space.World);
 					transform.Rotate(transform.forward,rotatingSpeed,Space.World);
-				}
+//				}
 				break;
 			}
-			/*case 2:
+			case 2:
 			{
-				Destroy(gameObject);
+				// Destroy(gameObject);
 				break;
-			}*/
+			}
 			case 3:
 			{
-				trans = movingDerection.normalized * movingSpeed * Time.deltaTime;
+				trans = MovingDirection.normalized * movingSpeed * Time.deltaTime;
 				transform.Translate(trans,Space.World);
 				transform.Rotate(transform.forward,rotatingSpeed,Space.World);
 				break;
@@ -82,14 +82,16 @@ public class Food : MonoBehaviour
 
 	public void Shoot(Vector3 direction)
 	{
-		movingDerection = direction;
+		MovingDirection = direction;
 		state = 3;
 	}
 
 	public void MoveToSlot(Slot slot)
 	{
-		
 		state = 2;
+		transform.parent = slot.transform;
+		transform.position = slot.GetObjectSlotTransform().position;
+		
 	}
 
 	public void Drop()

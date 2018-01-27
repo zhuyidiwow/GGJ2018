@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Slot : MonoBehaviour {
@@ -13,11 +14,14 @@ public class Slot : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		
-		if (!isHoldingFood && other.gameObject.CompareTag("Food")) {
-			isHoldingFood = true;
+		if (other.gameObject.CompareTag("Food")) {
 			Food food = other.GetComponent<Food>();
-			food.transform.parent = this.transform;
-			food.transform.position = objectPos.transform.position;
+			if (!isHoldingFood) {
+				isHoldingFood = true;
+				food.MoveToSlot(this);
+			} else if (isHoldingFood) {
+				food.Shoot(-food.MovingDirection);
+			}
 		}
 	}
 
