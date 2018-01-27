@@ -18,10 +18,6 @@ public class Animal : MonoBehaviour
 		anim = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 	
 	private void OnTriggerEnter2D(Collider2D other) {
 		
@@ -29,20 +25,22 @@ public class Animal : MonoBehaviour
 			Food incomingFood = other.GetComponent<Food>();
 			incomingFood.Eat();
 			if (incomingFood.GetID()==ID) {
-				
-			} else {
-				
+				//anim.ResetTrigger();
+				tendency += incomingFood.GetPlayerID();
+				anim.SetTrigger("Nod");
+			} else
+			{
+				tendency -= incomingFood.GetPlayerID();
+				anim.SetTrigger("Shke");
 			}
 		}
 	}
 	
-	private void rightFood()
-	{
-		//anim. = animations[0];
-	}
-
-	private void wrongFood()
-	{
+	// Update is called once per frame
+	void Update () {
 		
 	}
+	
+	
+	
 }
