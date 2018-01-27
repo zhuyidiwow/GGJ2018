@@ -17,12 +17,8 @@ public class Slot : MonoBehaviour {
 		
 		if (other.gameObject.CompareTag("Food")) {
 			Food incomingFood = other.GetComponent<Food>();
-			//TODO: make sure that the food won't be reflected, when it just sit in the wheel
-			if (IsHoldingFood && incomingFood != food) {
-				Vector2 direction = incomingFood.transform.position - transform.parent.parent.position;
-				incomingFood.Shoot(direction);
-				//TODO: or use drop
-				// incomingFood.Drop();
+			if (IsHoldingFood) {
+				incomingFood.Drop();
 			}
 			else if (!IsHoldingFood) {
 				IsHoldingFood = true;
@@ -39,7 +35,7 @@ public class Slot : MonoBehaviour {
 	//TODO: change state of food so it won't be received again
 	public void ShootFood(Pointer pointer) {
 		food.Shoot(pointer.transform.position - GetObjectSlotTransform().position);
-		food.transform.parent = null;
+		food.transform.parent = GameObject.Find("FoodContainer").transform;
 		food = null;
 		IsHoldingFood = false;
 	}

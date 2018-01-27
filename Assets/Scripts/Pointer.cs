@@ -33,14 +33,14 @@ public class Pointer : MonoBehaviour {
 			}
 
 			if (GetTriggerDown()) {
-				Fire();		
+				Fire();
 			}
 		}
 	}
 
 	private void Fire() {
 		Vector2 direction = player.transform.position - transform.position;
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100f, LayerMask.GetMask("Wheel"));
 		if (hit.collider != null) {
 			Slot slot = hit.collider.GetComponent<Slot>();
 			if (slot.IsHoldingFood) {
