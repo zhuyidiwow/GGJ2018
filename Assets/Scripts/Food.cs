@@ -22,11 +22,10 @@ public class Food : MonoBehaviour
 //	3: fly away
 //	4: be ate
 //	5: drop
-	public Vector3 MovingDirection;
+	private Vector3 movingDirection;
 	
 	//-------------TEST-------------
 
-	private Vector3 trans;
 	// Use this for initialization
 	void Start ()
 	{
@@ -46,8 +45,8 @@ public class Food : MonoBehaviour
 //				}
 //				else
 //				{
-					trans = (destination.position - transform.position).normalized * movingSpeed * Time.deltaTime;
-					transform.Translate(trans,Space.World);
+					movingDirection = (destination.position - transform.position).normalized * movingSpeed * Time.deltaTime;
+					transform.Translate(movingDirection,Space.World);
 					transform.Rotate(transform.forward,rotatingSpeed,Space.World);
 //				}
 				break;
@@ -59,8 +58,8 @@ public class Food : MonoBehaviour
 			}
 			case 3:
 			{
-				trans = MovingDirection.normalized * movingSpeed * Time.deltaTime;
-				transform.Translate(trans,Space.World);
+				movingDirection = movingDirection.normalized * movingSpeed * Time.deltaTime;
+				transform.Translate(movingDirection,Space.World);
 				transform.Rotate(transform.forward,rotatingSpeed,Space.World);
 				break;
 			}
@@ -82,7 +81,7 @@ public class Food : MonoBehaviour
 
 	public void Shoot(Vector3 direction)
 	{
-		MovingDirection = direction;
+		movingDirection = direction;
 		state = 3;
 	}
 
@@ -95,6 +94,7 @@ public class Food : MonoBehaviour
 
 	public void Drop()
 	{
-		state = 5;
+		movingDirection = -1*movingDirection;
+		state = 3;
 	}
 }

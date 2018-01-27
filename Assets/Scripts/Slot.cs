@@ -21,6 +21,8 @@ public class Slot : MonoBehaviour {
 			if (IsHoldingFood && incomingFood != food) {
 				Vector2 direction = incomingFood.transform.position - transform.parent.parent.position;
 				incomingFood.Shoot(direction);
+				//TODO: or use drop
+				// incomingFood.Drop();
 			}
 			else if (!IsHoldingFood) {
 				IsHoldingFood = true;
