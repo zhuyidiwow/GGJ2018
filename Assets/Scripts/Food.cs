@@ -104,7 +104,7 @@ public class Food : MonoBehaviour
 
 	public void Eat()
 	{
-		
+		Destroy(gameObject);
 	}
 
 	public bool IsCaught() {

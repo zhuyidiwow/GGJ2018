@@ -23,7 +23,7 @@ public class Animal : MonoBehaviour
 		
 		if (other.gameObject.CompareTag("Food")) {
 			Food incomingFood = other.GetComponent<Food>();
-			incomingFood.Eat();
+			
 			if (incomingFood.GetID()==ID) {
 				//anim.ResetTrigger();
 				tendency += incomingFood.GetPlayerID();
@@ -33,6 +33,7 @@ public class Animal : MonoBehaviour
 				tendency -= incomingFood.GetPlayerID();
 				anim.SetTrigger("Shke");
 			}
+			incomingFood.Eat();
 		}
 	}
 	
