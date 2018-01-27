@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodGenerator : MonoBehaviour {
-	public static FoodGenerator Instance;
-	
 	public GameObject[] foods;
 	public float AmountPerSecond;
 	public Transform FoodContainer;
@@ -18,10 +16,6 @@ public class FoodGenerator : MonoBehaviour {
 	
 	
 	//-----------TEST---------------
-	
-	void Start () {
-		if (Instance == null) Instance = this;
-	}
 	
 	// Update is called once per frame
 	void Update () {

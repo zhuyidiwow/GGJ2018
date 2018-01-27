@@ -3,7 +3,9 @@
 public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance;
-
+	public Player P1;
+	public Player P2;
+	
 	[Tooltip("In seconds")]
 	public float GameDuration;
 	public AnimationCurve AmountCurve;
@@ -11,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	private float startTime;
 	private bool isGameOver = false;
 		
-	private void Start() {
+	private void Awake() {
 		if (Instance == null) Instance = this;
 	}
 
@@ -21,7 +23,9 @@ public class GameManager : MonoBehaviour {
 		if (elapsedTime >= GameDuration) {
 			if (!isGameOver) TimeUp();		
 		} else {
-			FoodGenerator.Instance.AmountPerSecond = AmountCurve.Evaluate(elapsedTime / GameDuration);
+			foreach (FoodGenerator foodGenerator in FindObjectsOfType<FoodGenerator>()) {
+				foodGenerator.AmountPerSecond = AmountCurve.Evaluate(elapsedTime / GameDuration);
+			}
 		}
 	}
 	

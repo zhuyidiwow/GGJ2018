@@ -12,6 +12,20 @@ public class Player : MonoBehaviour {
 	public bool ShouldReceiveInput = true;
 	public float InputThreshold = 0.5f;
 
+	private void Start() {
+		switch (EPlayer) {
+			case EPlayer.Left:
+				GameManager.Instance.P1 = this;
+				break;
+			case EPlayer.Right:
+				GameManager.Instance.P2 = this;
+				break;
+			default:
+				Debug.LogError("Player num");
+				break;
+		}
+	}
+
 	public void GetScore() {
 			
 	}

@@ -57,3 +57,6 @@ TagManager:
   - name: Items
     uniqueID: 4172022183
     locked: 0
+  - name: Animals
+    uniqueID: 1616274893
+    locked: 0
