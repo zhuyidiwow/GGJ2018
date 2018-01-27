@@ -116,5 +116,10 @@ public class Food : MonoBehaviour
 		return state > 2;
 	}
 
+	public int GetPlayerID()
+	{
+		return 1;
+	}
+
 	
 }
