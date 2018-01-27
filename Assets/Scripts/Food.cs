@@ -16,6 +16,8 @@ public class Food : MonoBehaviour
 	[SerializeField] private float rotatingSpeed;
 
 	private int state;
+
+	
 //	0: start
 //	1: moving to roller
 //	2: stay in roller
@@ -97,4 +99,16 @@ public class Food : MonoBehaviour
 		movingDirection = -1*movingDirection;
 		state = 3;
 	}
+
+	public void Eat()
+	{
+		
+	}
+
+	public bool GetShotState()
+	{
+		return state > 2;
+	}
+
+	
 }
