@@ -35,10 +35,11 @@ public class Slot : MonoBehaviour {
 		return objectPos;
 	}
 
-	//TODO: change state of food so it won't be received again
 	public void ShootFood(Pointer pointer) {
-		food.Shoot(pointer.transform.position - GetObjectSlotTransform().position);
+		food.transform.position = pointer.transform.position;
 		food.transform.parent = GameObject.Find("FoodContainer").transform;
+		food.Shoot(pointer.transform.position - transform.parent.parent.position);
+		
 		food = null;
 		IsHoldingFood = false;
 	}
