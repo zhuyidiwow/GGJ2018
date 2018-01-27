@@ -5,7 +5,7 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
 
-	private int id;
+	[SerializeField] private int id;
 	[SerializeField] private float error;
 	private Transform destination;
 

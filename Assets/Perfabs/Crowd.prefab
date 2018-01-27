@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 1718054492124066, guid: 0b8704c30d97cf44da8735e0faeffaea, type: 2}
   - {fileID: 1084702130756406, guid: 309b5afe1d4beaf47807b793fbe4e011, type: 2}
   - {fileID: 1095967326368540, guid: db2b0d8eec2f76c4192cfc5660da242b, type: 2}
+  - {fileID: 0}
   AmountPerSecond: 1
   FoodContainer: {fileID: 0}
   Wheel: {fileID: 0}
