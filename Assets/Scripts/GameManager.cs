@@ -4,8 +4,10 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance;
 
+	[Tooltip("In seconds")]
 	public float GameDuration;
-
+	public AnimationCurve AmountCurve;
+	
 	private float startTime;
 	private bool isGameOver = false;
 		
@@ -14,8 +16,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Time.time - startTime >= GameDuration) {
+		float elapsedTime = Time.time - startTime;
+		
+		if (elapsedTime >= GameDuration) {
 			if (!isGameOver) TimeUp();		
+		} else {
+			FoodGenerator.Instance.AmountPerSecond = AmountCurve.Evaluate(elapsedTime / GameDuration);
 		}
 	}
 	
