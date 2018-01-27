@@ -89,11 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e342f8edcc8dcd94b9b511b7cb774e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 1
   error: 0.1
   movingSpeed: 0
   flyingSpeed: 0
   rotatingSpeed: 0
-  MovingDirection: {x: 0, y: 0, z: 0}
 --- !u!212 &212860702698455570
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -103,7 +103,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -119,7 +118,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
