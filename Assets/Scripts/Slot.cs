@@ -8,8 +8,10 @@ public class Slot : MonoBehaviour {
 	public bool IsHoldingFood = false;
 	private Transform objectPos;
 	private Food food;
-
+	private Player player;
+	
 	private void Start() {
+		player = transform.parent.parent.parent.GetComponent<Player>();
 		objectPos = transform.Find("Object Position");
 	}
 
@@ -18,7 +20,7 @@ public class Slot : MonoBehaviour {
 		if (other.gameObject.CompareTag("Food")) {
 			Food incomingFood = other.GetComponent<Food>();
 			if (IsHoldingFood) {
-				incomingFood.Drop();
+				incomingFood.Drop(player.GetPlayerNo());
 			}
 			else if (!IsHoldingFood) {
 				if (!incomingFood.IsCaught() && !incomingFood.GetShotState()) {
@@ -38,7 +40,7 @@ public class Slot : MonoBehaviour {
 	public void ShootFood(Pointer pointer) {
 		food.transform.position = pointer.transform.position;
 		food.transform.parent = GameObject.Find("FoodContainer").transform;
-		food.Shoot(pointer.transform.position - transform.parent.parent.position);
+		food.Shoot(pointer.transform.position - transform.parent.parent.position, player.GetPlayerNo());
 		
 		food = null;
 		IsHoldingFood = false;

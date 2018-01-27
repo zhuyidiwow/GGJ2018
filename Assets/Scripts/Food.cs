@@ -16,7 +16,7 @@ public class Food : MonoBehaviour
 	[SerializeField] private float rotatingSpeed;
 
 	private int state;
-
+	private int playerNo;
 	
 //	0: start
 //	1: moving to roller
@@ -81,9 +81,10 @@ public class Food : MonoBehaviour
 		state = 1;
 	}
 
-	public void Shoot(Vector3 direction)
+	public void Shoot(Vector3 direction, int pNo)
 	{
 		movingDirection = direction;
+		playerNo = pNo;
 		state = 3;
 	}
 
@@ -94,11 +95,12 @@ public class Food : MonoBehaviour
 		transform.position = slot.GetObjectSlotTransform().position;
 	}
 
-	public void Drop()
+	public void Drop(int pNo)
 	{
 		if (!GetShotState() && !IsCaught()) {
 			movingDirection = -1 * movingDirection;
 			state = 3;
+			playerNo = pNo;
 		}
 	}
 
@@ -118,7 +120,7 @@ public class Food : MonoBehaviour
 
 	public int GetPlayerID()
 	{
-		return 1;
+		return playerNo;
 	}
 
 	

@@ -6,14 +6,17 @@ using UnityEngine;
 public class Pointer : MonoBehaviour {
 	
 	public float Distance;
-	public float AngleInDeg;
 
+	public bool UseAbsolotueControl = false;
 	private Player player;
 	
 	private string horiAxis;
 	private string verAxis;
 	private string triggerAxis;
 	private bool hasJustFired = false;
+	private bool isNewRotation = true;
+	private float currentAngle;
+	private float lastFrameAngle;
 	
 	private void Start() {
 		player = transform.parent.GetComponent<Player>();
@@ -25,11 +28,31 @@ public class Pointer : MonoBehaviour {
 	private void Update() {
 		
 		if (player.ShouldReceiveInput) {
-			float x = Input.GetAxis(horiAxis);
-			float y = Input.GetAxis(verAxis);
-			if (Utilities.Math.GetMagnitude(new Vector2(x, y)) > player.InputThreshold) {
-				AngleInDeg = Utilities.Math.GetAngle(x, y);	
-				Move();
+			if (UseAbsolotueControl) {
+				float x = Input.GetAxis(horiAxis);
+				float y = Input.GetAxis(verAxis);
+				if (Utilities.Math.GetMagnitude(new Vector2(x, y)) > player.InputThreshold) {
+					currentAngle = Utilities.Math.GetAngle(x, y);
+					Move();
+				}
+			} else {
+
+				float x = Input.GetAxis(horiAxis);
+				float y = Input.GetAxis(verAxis);
+				if (Utilities.Math.GetMagnitude(new Vector2(x, y)) > player.InputThreshold) {
+
+					currentAngle = Utilities.Math.GetAngle(x, y);
+					if (isNewRotation) {
+						isNewRotation = false;
+						lastFrameAngle = currentAngle;
+					}
+
+					float dAngle = currentAngle - lastFrameAngle; // counterclock wise, in deg
+					transform.RotateAround(player.transform.position, Vector3.forward, dAngle);
+					lastFrameAngle = currentAngle;
+				} else {
+					isNewRotation = true;
+				}
 			}
 
 			if (GetTriggerDown()) {
@@ -50,10 +73,10 @@ public class Pointer : MonoBehaviour {
 	}
 
 	private void Move() {
-		float angleInRad = AngleInDeg * Mathf.Deg2Rad;
+		float angleInRad = currentAngle * Mathf.Deg2Rad;
 		Vector3 posOffset = Distance * new Vector3(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad), 0f);
 		transform.position = player.transform.position + posOffset;
-		transform.rotation = Quaternion.Euler(0, 0, AngleInDeg);
+		transform.rotation = Quaternion.Euler(0, 0, currentAngle);
 	}
 	
 	private bool GetTriggerDown() {
