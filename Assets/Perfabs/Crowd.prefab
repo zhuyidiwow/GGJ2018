@@ -69,16 +69,28 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.04374695
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.9874878
-      value: 0.98125076
+      value: 0
       inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      outSlope: 1.5710975
+      tangentMode: 69
+    - serializedVersion: 2
+      time: 0.20181455
+      value: 0.31707034
+      inSlope: 1.5710975
+      outSlope: 0.6734314
+      tangentMode: 69
+    - serializedVersion: 2
+      time: 0.80266184
+      value: 0.7216998
+      inSlope: 0.6734314
+      outSlope: 1.4102707
+      tangentMode: 69
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1.4102707
+      outSlope: Infinity
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0

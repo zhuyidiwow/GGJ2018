@@ -5,15 +5,23 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
 
-	public int id;
-	public float error;
-	public Transform destination;
+	private int id;
+	[SerializeField] private float error;
+	private Transform destination;
 
-	public float movingSpeed;
+	[SerializeField] private float movingSpeed;
 
-	public float rotatingSpeed;
+	[SerializeField] private float flyingSpeed;
 
-	public int state;
+	[SerializeField] private float rotatingSpeed;
+
+	private int state;
+//	0: start
+//	1: moving to roller
+//	2: stay in roller
+//	3: fly away
+//	4: be ate
+//	5: drop
 	private Vector3 movingDerection;
 	
 	//-------------TEST-------------
@@ -59,6 +67,11 @@ public class Food : MonoBehaviour
 		}
 	}
 
+	public int GetID()
+	{
+		return id;
+	}
+	
 	public void Initialize(Transform des,float mSpeed,float rSpeed)
 	{
 		destination = des;
@@ -71,5 +84,16 @@ public class Food : MonoBehaviour
 	{
 		movingDerection = direction;
 		state = 3;
+	}
+
+	public void MoveToSlot(Slot slot)
+	{
+		
+		state = 2;
+	}
+
+	public void Drop()
+	{
+		state = 5;
 	}
 }
