@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212731588346664474}
   - component: {fileID: 114524783976905502}
   m_Layer: 0
-  m_Name: Cat
+  m_Name: fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
