@@ -44,7 +44,7 @@ public class Pointer : MonoBehaviour {
 		if (hit.collider != null) {
 			Slot slot = hit.collider.GetComponent<Slot>();
 			if (slot.IsHoldingFood) {
-				
+				slot.ShootFood(this);
 			}
 		}
 	}
