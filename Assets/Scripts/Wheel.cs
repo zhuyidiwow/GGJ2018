@@ -10,6 +10,7 @@ public class Wheel : MonoBehaviour {
 	private float lastFrameAngle; // counterclockwise from x axis, in deg
 	private string horiAxis;
 	private string verAxis;
+	private bool isNewRotation = true;
 
 	private void Start() {
 		player = transform.parent.GetComponent<Player>();
@@ -21,10 +22,17 @@ public class Wheel : MonoBehaviour {
 		float x = Input.GetAxis(horiAxis);
 		float y = Input.GetAxis(verAxis);
 		if (Utilities.Math.GetMagnitude(new Vector2(x, y)) > player.InputThreshold) {
+			
 			currentAngle = Utilities.Math.GetAngle(x, y);
+			if (isNewRotation) {
+				isNewRotation = false;
+				lastFrameAngle = currentAngle;
+			}
 			float dAngle = currentAngle - lastFrameAngle; // counterclock wise, in deg
 			transform.Rotate(0f, 0f, dAngle);
 			lastFrameAngle = currentAngle;
+		} else {
+			isNewRotation = true;
 		}
 	}
 }
