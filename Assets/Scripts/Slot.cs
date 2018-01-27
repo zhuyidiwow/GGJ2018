@@ -21,9 +21,12 @@ public class Slot : MonoBehaviour {
 				incomingFood.Drop();
 			}
 			else if (!IsHoldingFood) {
-				IsHoldingFood = true;
-				incomingFood.MoveToSlot(this);
-				food = incomingFood;
+				if (!incomingFood.IsCaught() && !incomingFood.GetShotState()) {
+					// catch food
+					IsHoldingFood = true;
+					incomingFood.MoveToSlot(this);
+					food = incomingFood;
+				}
 			}
 		}
 	}
