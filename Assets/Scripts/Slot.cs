@@ -22,7 +22,7 @@ public class Slot : MonoBehaviour {
 				incomingFood.MoveToSlot(this);
 				food = incomingFood;
 			} else if (IsHoldingFood) {
-				incomingFood.Shoot(-incomingFood.MovingDirection);
+				incomingFood.Drop();
 			}
 		}
 	}
