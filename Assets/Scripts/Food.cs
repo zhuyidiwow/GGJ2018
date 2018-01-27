@@ -96,8 +96,10 @@ public class Food : MonoBehaviour
 
 	public void Drop()
 	{
-		movingDirection = -1*movingDirection;
-		state = 3;
+		if (!GetShotState()) {
+			movingDirection = -1 * movingDirection;
+			state = 3;
+		}
 	}
 
 	public void Eat()
@@ -105,6 +107,10 @@ public class Food : MonoBehaviour
 		
 	}
 
+	public bool IsCaught() {
+		return state == 2;
+	}
+	
 	public bool GetShotState()
 	{
 		return state > 2;
