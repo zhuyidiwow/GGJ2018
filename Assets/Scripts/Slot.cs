@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour {
 
-	private bool isHoldingFood = false;
+	public bool IsHoldingFood = false;
 	private Transform objectPos;
+	private Food food;
 
 	private void Start() {
 		objectPos = transform.Find("Object Position");
@@ -15,12 +16,13 @@ public class Slot : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D other) {
 		
 		if (other.gameObject.CompareTag("Food")) {
-			Food food = other.GetComponent<Food>();
-			if (!isHoldingFood) {
-				isHoldingFood = true;
-				food.MoveToSlot(this);
-			} else if (isHoldingFood) {
-				food.Shoot(-food.MovingDirection);
+			Food incomingFood = other.GetComponent<Food>();
+			if (!IsHoldingFood) {
+				IsHoldingFood = true;
+				incomingFood.MoveToSlot(this);
+				food = incomingFood;
+			} else if (IsHoldingFood) {
+				incomingFood.Shoot(-incomingFood.MovingDirection);
 			}
 		}
 	}

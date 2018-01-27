@@ -43,8 +43,9 @@ public class Pointer : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
 		if (hit.collider != null) {
 			Slot slot = hit.collider.GetComponent<Slot>();
-			//TODO: move food there
-			Debug.Log("Shooting food from: " + slot.name);
+			if (slot.IsHoldingFood) {
+				
+			}
 		}
 	}
 

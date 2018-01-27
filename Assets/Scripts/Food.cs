@@ -91,7 +91,6 @@ public class Food : MonoBehaviour
 		state = 2;
 		transform.parent = slot.transform;
 		transform.position = slot.GetObjectSlotTransform().position;
-		
 	}
 
 	public void Drop()
