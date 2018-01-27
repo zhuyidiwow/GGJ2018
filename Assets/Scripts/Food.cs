@@ -14,10 +14,11 @@ public class Food : MonoBehaviour
 	public float rotatingSpeed;
 
 	public int state;
+	private Vector3 movingDerection;
 	
 	//-------------TEST-------------
 
-	public Vector3 trans;
+	private Vector3 trans;
 	// Use this for initialization
 	void Start ()
 	{
@@ -43,12 +44,18 @@ public class Food : MonoBehaviour
 				}
 				break;
 			}
-			case 2:
+			/*case 2:
 			{
 				Destroy(gameObject);
 				break;
+			}*/
+			case 3:
+			{
+				trans = movingDerection.normalized * movingSpeed * Time.deltaTime;
+				transform.Translate(trans,Space.World);
+				transform.Rotate(transform.forward,rotatingSpeed,Space.World);
+				break;
 			}
-			
 		}
 	}
 
@@ -58,5 +65,11 @@ public class Food : MonoBehaviour
 		movingSpeed = mSpeed;
 		rotatingSpeed = rSpeed;
 		state = 1;
+	}
+
+	public void Shoot(Vector3 direction)
+	{
+		movingDerection = direction;
+		state = 3;
 	}
 }
