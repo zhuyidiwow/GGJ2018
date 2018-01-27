@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts {
-	public enum EPlayer {
-		Left,
-		Right
-	}
+public enum EPlayer {
+	Left,
+	Right
+}
 	
-	public class Player : MonoBehaviour {
+public class Player : MonoBehaviour {
 
-		public EPlayer EPlayer;
-		public int Score = 0;
+	public EPlayer EPlayer;
+	public int Score = 0;
+	public bool ShouldReceiveInput = true;
 		
-		public void GetScore() {
+	public void GetScore() {
 			
-		}
 	}
 }
