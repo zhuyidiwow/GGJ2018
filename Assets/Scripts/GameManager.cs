@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -6,8 +7,8 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 	[HideInInspector] public Player P1;
 	[HideInInspector] public Player P2;
-	public Text P1ScoreText;
-	public Text P2ScoreText;
+	public TextMeshProUGUI P1ScoreText;
+	public TextMeshProUGUI P2ScoreText;
 	
 	[Tooltip("In seconds")]
 	public float GameDuration;
