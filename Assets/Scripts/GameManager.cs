@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour {
 	[Tooltip("In seconds")]
 	public float GameDuration;
 	public AnimationCurve AmountCurve;
+	public bool IsGameOver = false;
 	
 	private float startTime;
-	private bool isGameOver = false;
 		
 	private void Awake() {
 		if (Instance == null) Instance = this;
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 		float elapsedTime = Time.time - startTime;
 		
 		if (elapsedTime >= GameDuration) {
-			if (!isGameOver) TimeUp();		
+			if (!IsGameOver) TimeUp();		
 		} else {
 			foreach (FoodGenerator foodGenerator in FindObjectsOfType<FoodGenerator>()) {
 				foodGenerator.AmountPerSecond = AmountCurve.Evaluate(elapsedTime / GameDuration);
@@ -29,19 +29,24 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public float GetProgress() {
+		return (Time.time - startTime) / GameDuration;
+	}
+	
 	public Player GetPlayer(int pNo) {
 		return pNo == 1 ? P1 : P2;
 	}
+	
 	public void StartGame() {
 		startTime = Time.time;
 	}
 
 	public void TimeUp() {
-		isGameOver = true;
+		IsGameOver = true;
 	}
 		
 	public void Win(EPlayer ePlayer) {
-		isGameOver = true;
+		IsGameOver = true;
 	}
 	
 	

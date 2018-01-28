@@ -6,13 +6,36 @@ public class Rabbit : MonoBehaviour {
 
     private Animator animator;
     private bool isHit;
+    private bool isReady;
+    private Vector3 originalScale;
     
     void Start() {
         animator = GetComponent<Animator>();
+        originalScale = transform.localScale;
+        StartCoroutine(PopCoroutine());
+        
+    }
+
+    private IEnumerator PopCoroutine() {
+        float elapsedTime = 0f;
+        while (elapsedTime < 0.4f) {
+            transform.localScale = Vector3.Lerp(Vector3.zero, 1.3f * originalScale, elapsedTime / 0.4f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsedTime = 0f;
+        while (elapsedTime < 0.2f) {
+            transform.localScale = Vector3.Lerp(1.3f * originalScale, originalScale, elapsedTime / 0.2f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isReady = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (isHit) return;
+        if (isHit || !isReady) return;
         
         if (other.gameObject.CompareTag("Food")) {
             Food incomingFood = other.GetComponent<Food>();
@@ -32,12 +55,10 @@ public class Rabbit : MonoBehaviour {
     }
 
     private void Love(int pNo) {
-        // animator.SetTrigger("Nod");
         RunTo(GameManager.Instance.GetPlayer(pNo));
     }
 
     private void Hate(int pNo) {
-        // animator.SetTrigger("Shake");
         pNo = pNo == 1 ? 2 : 1;
         RunTo(GameManager.Instance.GetPlayer(pNo));
     }
@@ -52,7 +73,6 @@ public class Rabbit : MonoBehaviour {
     private IEnumerator MoveCoroutine(Vector3 destination, float factor = 5f) {
         while (Vector3.Distance(transform.position, destination) > 0.01f) {
             transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * factor);
-            Debug.Log(Vector3.Distance(transform.position, destination));
             yield return null;
         }
     }
