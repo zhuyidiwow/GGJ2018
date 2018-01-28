@@ -26,6 +26,9 @@ public class Field : MonoBehaviour {
 	}
 
 	private IEnumerator GrowCarrotCoroutine(List<Food> carrots) {
+		foreach (Food carrot in carrots) {
+			carrot.GetComponent<SpriteRenderer>().sortingOrder = 2;
+		}
 		
 		float elapsedTime = 0f;
 		while (elapsedTime < 0.8f) {
@@ -42,8 +45,8 @@ public class Field : MonoBehaviour {
 		
 		GameObject giant = Instantiate(GiantCarrotPrefab, transform.position + Vector3.up * 0.2f, transform.rotation);
 		giant.transform.parent = null;
-		
-		giant.transform.localScale = 0.5f * Vector3.one;
+		giant.transform.localScale = 0.3f * Vector3.one;
+		giant.transform.Rotate(0f, 0f, 30f);
 		StartCoroutine(GiantCarrotCoroutine(giant));
 		
 		CarrotCount = 0;
@@ -68,7 +71,28 @@ public class Field : MonoBehaviour {
 			yield return null;
 		}
 		
-		giant.GetComponent<Food>().Initialize(Player.transform, 4f, 3f);
+		elapsedTime = 0f;
+		while (elapsedTime < 0.15f) {
+			giant.transform.Translate(Vector3.up * Time.deltaTime * 0.2f);
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+		
+		elapsedTime = 0f;
+		while (elapsedTime < 0.3f) {
+			giant.transform.Translate(Vector3.down * Time.deltaTime * 0.2f);
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+		
+		elapsedTime = 0f;
+		while (elapsedTime < 0.15f) {
+			giant.transform.Translate(Vector3.up * Time.deltaTime * 0.2f);
+			elapsedTime += Time.deltaTime;
+			yield return null;
+		}
+		
+		giant.GetComponent<Food>().Initialize(Player.transform, .8f, 0f);
 	}
 	
 	
