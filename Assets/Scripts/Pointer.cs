@@ -60,7 +60,7 @@ public class Pointer : MonoBehaviour {
 				}
 			}
 
-			if (GetTriggerDown()) {
+			if (GetTriggerDown() && !GameManager.Instance.IsGameOver) {
 				Fire();
 			}
 		}
