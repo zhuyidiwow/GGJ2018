@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rabbit : MonoBehaviour {
-
+    public Vector2 ScaleRange;
+    
     private Animator animator;
     private bool isHit;
     private bool isReady;
@@ -11,6 +12,7 @@ public class Rabbit : MonoBehaviour {
     
     void Start() {
         animator = GetComponent<Animator>();
+        transform.localScale *= Random.Range(ScaleRange.x, ScaleRange.y);
         originalScale = transform.localScale;
         StartCoroutine(PopCoroutine());
         

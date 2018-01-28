@@ -8,7 +8,7 @@ public enum EPlayer {
 public class Player : MonoBehaviour {
 
 	public EPlayer EPlayer;
-	public int Score;
+	public int Score = 0;
 	public bool ShouldReceiveInput = true;
 	public float InputThreshold = 0.5f;
 	public Transform RabbitAreaCenter;
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
 	
 	public void GetScore() {
 		Score++;
-		GameManager.Instance.UpdateScore();
+		GameManager.Instance.UpdateScoreText();
 	}
 
 	public int GetPlayerNo() {
