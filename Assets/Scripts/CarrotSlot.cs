@@ -52,6 +52,7 @@ public class CarrotSlot : MonoBehaviour {
                     break;
                 case Food.EFood.SHIT:
                     if (Carrot != null && !isGone) {
+                        Destroy(food.gameObject);
                         isGrown = true;
                         Carrot.transform.localScale *= 1.5f;
                         Carrot.transform.position += Vector3.up * 0.09f;
