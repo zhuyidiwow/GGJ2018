@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612413753427272}
   m_LocalRotation: {x: -0.03197089, y: 0.039406087, z: -0.9987109, w: 0.00126681}
-  m_LocalPosition: {x: 2.28, y: -0.06, z: 2.91}
+  m_LocalPosition: {x: 2.28, y: -0.06, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4696100066469066}
@@ -160,7 +160,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1957759189
+  randomSeed: 756469784
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3422,7 +3422,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1125046909
+  randomSeed: -340030525
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3512,7 +3512,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.53676474, b: 0.53676474, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4321,7 +4321,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -6644,7 +6644,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: c75bcf03be6fce34aa789c7ba59ade75, type: 2}
+  - {fileID: 2100000, guid: f03723decc9ccf646b59e543ec17cf43, type: 2}
   - {fileID: 2100000, guid: bd68b40dbec199349aa9c0b865e632ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -6661,8 +6661,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -690493279
-  m_SortingLayer: 1
+  m_SortingLayerID: 2089119789
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -6696,7 +6696,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: c75bcf03be6fce34aa789c7ba59ade75, type: 2}
+  - {fileID: 2100000, guid: bd68b40dbec199349aa9c0b865e632ee, type: 2}
   - {fileID: 2100000, guid: bd68b40dbec199349aa9c0b865e632ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -6713,8 +6713,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -690493279
-  m_SortingLayer: 1
+  m_SortingLayerID: 2089119789
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
