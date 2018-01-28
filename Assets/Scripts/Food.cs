@@ -58,8 +58,9 @@ public class Food : MonoBehaviour {
         state = 3;
     }
 
-    public void MoveToSlot(Slot slot) {
+    public void MoveToSlot(Slot slot,int pNo) {
         state = 2;
+        playerNo = pNo;
         transform.parent = slot.transform;
         transform.position = slot.GetObjectSlotTransform().position;
     }
