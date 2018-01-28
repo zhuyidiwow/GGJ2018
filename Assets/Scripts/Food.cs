@@ -14,6 +14,7 @@ public class Food : MonoBehaviour {
     public float RotateSpeed;
     public float ShootSpeed;
 
+    public bool IsInField;
     // 0: start
     // 1: fly to player
     // 2: caught by player
