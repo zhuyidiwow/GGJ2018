@@ -184,7 +184,7 @@ Transform:
   m_LocalScale: {x: 0.7924356, y: 0.4425407, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &220793151
 GameObject:
@@ -258,34 +258,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &254608114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 254608115}
-  m_Layer: 0
-  m_Name: FoodContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &254608115
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 254608114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419329015
 GameObject:
@@ -1200,7 +1172,7 @@ Transform:
   - {fileID: 611237055}
   - {fileID: 444873453}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1015400006
 GameObject:
@@ -1262,7 +1234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1044184527
 GameObject:
@@ -1436,7 +1408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172409418
 GameObject:
@@ -1626,7 +1598,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773300982843496, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1269948111144292, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
       propertyPath: m_Layer
@@ -1740,11 +1712,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1367359235 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4773300982843496, guid: 2b266df2b3b34534b808ec5218c21556,
-    type: 2}
-  m_PrefabInternal: {fileID: 1357332073}
 --- !u!1 &1370767230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,134 +1966,73 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
         type: 2}
       propertyPath: FoodContainer
       value: 
-      objectReference: {fileID: 254608115}
+      objectReference: {fileID: 0}
     - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
         type: 2}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1253933381}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1637825965
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 9.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
+    - target: {fileID: 1845455471752282, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
+      propertyPath: m_Name
+      value: Food Generator
       objectReference: {fileID: 0}
     - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
         type: 2}
-      propertyPath: FoodContainer
+      propertyPath: Carrot
       value: 
-      objectReference: {fileID: 254608115}
+      objectReference: {fileID: 1095967326368540, guid: db2b0d8eec2f76c4192cfc5660da242b,
+        type: 2}
     - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
         type: 2}
-      propertyPath: Wheel
-      value: 
-      objectReference: {fileID: 1253933381}
-    - target: {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0.8014706
-      objectReference: {fileID: 0}
-    - target: {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.991785
-      objectReference: {fileID: 0}
-    - target: {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 405235715
-      objectReference: {fileID: 0}
-    - target: {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: foods.Array.data[5]
+      propertyPath: Shit
       value: 
       objectReference: {fileID: 1706033009932678, guid: 3a50d8afd6e63a849a2b3b12fa6e6882,
         type: 2}
+    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
+        type: 2}
+      propertyPath: LeftCrowd.x
+      value: -9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
+        type: 2}
+      propertyPath: LeftCrowd.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
+        type: 2}
+      propertyPath: LeftCrowd.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
+        type: 2}
+      propertyPath: RightCrowd.x
+      value: 9.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
+        type: 2}
+      propertyPath: RightCrowd.y
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.1805516
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.2454016
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4193131312148870, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.5002361
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2c308d0664512a341bdb0bf452c1e2fd,
-        type: 3}
-    - target: {fileID: 1845455471752282, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
-      propertyPath: m_Name
-      value: Crowd (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: Height
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114035294819831156, guid: a1ab88a89f938c044b4d6957ca73495b,
-        type: 2}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1367359235}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 212168592667020860, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a1ab88a89f938c044b4d6957ca73495b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1649769426
@@ -2200,7 +2106,7 @@ Transform:
   m_LocalScale: {x: 0.7924356, y: 0.4425407, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678642627
 GameObject:
@@ -2290,7 +2196,7 @@ RectTransform:
   - {fileID: 1529090517}
   - {fileID: 1010400930}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2334,7 +2240,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4773300982843496, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114782049112716042, guid: 2b266df2b3b34534b808ec5218c21556,
         type: 2}
