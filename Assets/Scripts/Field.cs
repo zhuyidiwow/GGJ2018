@@ -72,21 +72,21 @@ public class Field : MonoBehaviour {
 		}
 		
 		elapsedTime = 0f;
-		while (elapsedTime < 0.3f) {
+		while (elapsedTime < 0.15f) {
 			giant.transform.Translate(Vector3.up * Time.deltaTime * 0.2f);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
 		
 		elapsedTime = 0f;
-		while (elapsedTime < 0.6f) {
+		while (elapsedTime < 0.3f) {
 			giant.transform.Translate(Vector3.down * Time.deltaTime * 0.2f);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
 		
 		elapsedTime = 0f;
-		while (elapsedTime < 0.3f) {
+		while (elapsedTime < 0.15f) {
 			giant.transform.Translate(Vector3.up * Time.deltaTime * 0.2f);
 			elapsedTime += Time.deltaTime;
 			yield return null;

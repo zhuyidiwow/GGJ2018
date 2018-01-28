@@ -5,6 +5,8 @@ using UnityEngine;
 public class Rabbit : MonoBehaviour {
     public Vector2 ScaleRange;
     public AudioClip[] CaughtClips;
+    public AudioClip[] ComeOutClips;
+    public AudioClip[] EatShitClips;
     public GameObject LoveEffect;
     public GameObject HateEffect;
     
@@ -22,6 +24,7 @@ public class Rabbit : MonoBehaviour {
         StartCoroutine(PopCoroutine());
         LoveEffect.SetActive(false);
         HateEffect.SetActive(false);
+        Utilities.Audio.PlayAudio(audioSource, ComeOutClips[Random.Range(0, ComeOutClips.Length)]);
     }
 
     private IEnumerator PopCoroutine() {
@@ -74,6 +77,7 @@ public class Rabbit : MonoBehaviour {
     private void Hate(int pNo) {
         pNo = pNo == 1 ? 2 : 1;
         RunTo(GameManager.Instance.GetPlayer(pNo));
+        Utilities.Audio.PlayAudio(audioSource, EatShitClips[Random.Range(0, EatShitClips.Length)]);
         HateEffect.SetActive(true);
     }
 
