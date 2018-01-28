@@ -25,11 +25,13 @@ public class RabitGenerator : MonoBehaviour {
 		while (!GameManager.Instance.IsGameOver) {
 			if (transform.childCount < MaxLimit) {
 				int amount = (int) (BaseAmount * GenerateCurve.Evaluate(GameManager.Instance.GetProgress()));
-				amount *= (int) (transform.childCount <= 50 ? Random.Range(1.2f, 2f) : Random.Range(0.8f, 1f));
+				amount *= (int) (transform.childCount <= MaxLimit/2 ? Random.Range(1.5f, 2.5f) : Random.Range(0.8f, 1f));
 				Generate(amount);
 			}
 
-			yield return new WaitForSeconds(Random.Range(InteralRange.x, InteralRange.y));
+			float interval = Random.Range(InteralRange.x, InteralRange.y);
+			interval -= (float) Mathf.Abs(transform.childCount - MaxLimit) / MaxLimit;
+			yield return new WaitForSeconds(interval);
 		}	
 	}
 	
@@ -40,7 +42,7 @@ public class RabitGenerator : MonoBehaviour {
 	IEnumerator BunchGeneratCoroutine(int amount) {
 		for (int i = 0; i < amount; i++) {
 			GenerateOne();
-			yield return 0.2f;
+			yield return 0.3f;
 		}
 	}
 

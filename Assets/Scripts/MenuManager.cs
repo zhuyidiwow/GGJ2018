@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour {
 	public Player P1;
 	public Player P2;
 	public GameObject Hint;
+	public GameObject[] Images;
 	public int ShootCount = 6;
 
 	public TextMeshProUGUI P1Count;
@@ -32,7 +33,9 @@ public class MenuManager : MonoBehaviour {
 		MusicManager.Instance.StartMusic();
 		P1Count.text = p1Count + "/" + ShootCount;
 		P2Count.text = p2Count + "/" + ShootCount;
-		StartCoroutine(AnimateInstructionCoroutine());
+		// StartCoroutine(AnimateCoroutine(Hint, 1.3f));
+		StartCoroutine(AnimateCoroutine(Images[0], 1.15f));
+		StartCoroutine(AnimateCoroutine(Images[1], 1.15f));
 	}
 
 	public void Shoot(int pNo) {
@@ -99,19 +102,19 @@ public class MenuManager : MonoBehaviour {
 		}
 	}
 	
-	IEnumerator AnimateInstructionCoroutine() {
+	IEnumerator AnimateCoroutine(GameObject oToAnimate, float bigScale) {
 		float duration = 0.4f;
 		float stepTime = Time.deltaTime / 2f;
 		
 		float startTime;
 		float elapsedTime;
 		
-		Vector3 targetScale = Vector3.one * 1.2f;
+		Vector3 targetScale = Vector3.one * bigScale;
 		while (true) {
 			startTime = Time.time;
 			elapsedTime = Time.time - startTime;
 			while (elapsedTime < duration) {
-				Hint.transform.localScale =
+				oToAnimate.transform.localScale =
 					Vector3.Lerp(Vector3.one, targetScale, elapsedTime / duration);
 				yield return new WaitForSeconds(stepTime);
 				elapsedTime = Time.time - startTime;
@@ -120,7 +123,7 @@ public class MenuManager : MonoBehaviour {
 			startTime = Time.time;
 			elapsedTime = Time.time - startTime;
 			while (elapsedTime < duration) {
-				Hint.transform.localScale =
+				oToAnimate.transform.localScale =
 					Vector3.Lerp(targetScale, Vector3.one, elapsedTime / duration);
 				yield return new WaitForSeconds(stepTime);
 				elapsedTime = Time.time - startTime;

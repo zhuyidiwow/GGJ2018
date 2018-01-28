@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 	[HideInInspector] public Player P1;
 	[HideInInspector] public Player P2;
+	public Sprite[] Images;
 	
 	public TextMeshProUGUI P1ScoreText;
 	public TextMeshProUGUI P2ScoreText;
 	public TextMeshProUGUI CountDownText;
-	public TextMeshProUGUI WinText;
+	public TextMeshProUGUI TieText;
+	public Image WinImage;
 	
 	[Tooltip("In seconds")]
 	public float GameDuration;
@@ -59,7 +61,9 @@ public class GameManager : MonoBehaviour {
 	public void StartGame() {
 		startTime = Time.time;
 		MusicManager.Instance.StartMusic();
-		WinText.text = "";
+		WinImage.sprite = null;
+		WinImage.color = new Color(0f, 0f, 0f, 0f);
+		TieText.text = "";
 		StartCoroutine(CountDownCoroutine());
 	}
 
@@ -94,15 +98,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void P1Win() {
-		WinText.text = "P1 Wins!";
+		WinImage.sprite = Images[0];
+		WinImage.color = Color.white;
 	}
 
 	private void P2Win() {
-		WinText.text = "P2 Wins!";
+		WinImage.sprite = Images[1];
+		WinImage.color = Color.white;
 	}
 
 	private void Tie() {
-		WinText.text = "Tie!";
+		TieText.text = "Tie!";
 	}
 	
 	

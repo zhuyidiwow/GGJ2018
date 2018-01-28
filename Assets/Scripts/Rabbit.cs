@@ -12,7 +12,7 @@ public class Rabbit : MonoBehaviour {
 
     public Vector2 PositionRange_X;
     public Vector2 PositionRange_Z;
-    
+
     private Animator animator;
     private bool isHit;
     private bool isReady;
@@ -20,10 +20,11 @@ public class Rabbit : MonoBehaviour {
     private AudioSource audioSource;
 
     private Coroutine movingCoroutine;
-    
+    private bool isCaught;
+
     //----------------test----------------
     private Vector3 Destin;
-    
+
     void Start() {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -56,7 +57,7 @@ public class Rabbit : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (isHit || !isReady) return;
-        
+
         if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Giant Carrot")) {
             Food incomingFood = other.GetComponent<Food>();
 
@@ -80,12 +81,13 @@ public class Rabbit : MonoBehaviour {
     private void Love(int pNo, bool useEffect = true) {
         LoveEffect.transform.parent = null;
         if (!useEffect) {
-            if (Random.value < 0.2f) {
+            if (Random.value < 0.3f) {
                 LoveEffect.SetActive(true);
             }
         } else {
             LoveEffect.SetActive(true);
         }
+
         RunTo(GameManager.Instance.GetPlayer(pNo), useEffect);
         Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
         Destroy(LoveEffect, 3f);
@@ -101,48 +103,46 @@ public class Rabbit : MonoBehaviour {
 
     private void RunTo(Player player, bool useCoroutine = true) {
         Destroy(GetComponent<Collider2D>());
+        isCaught = true;
         player.GetScore();
         player.AddRabit(this);
         Vector3 destination = player.GetRabbitAreaCenter();
         destination += new Vector3(player.RabbitAreaSize.x * Random.Range(-0.5f, 0.5f), player.RabbitAreaSize.y * Random.Range(-0.5f, 0.5f));
         destination.z = transform.position.z;
-        if (movingCoroutine != null)
-        {
+        if (movingCoroutine != null) {
             StopCoroutine(movingCoroutine);
             movingCoroutine = null;
         }
+
         if (useCoroutine) StartCoroutine(MoveCoroutine(transform.parent.gameObject, destination));
         else transform.parent.position = destination;
-        
-        transform.parent.parent = null;
 
+        transform.parent.parent = null;
     }
 
     private IEnumerator MoveCoroutine(GameObject go, Vector3 destination, float factor = 10f) {
         while (Vector3.Distance(go.transform.position, destination) > 0.01f) {
             go.transform.position = Vector3.Lerp(go.transform.position, destination, Time.deltaTime * factor);
-            
+
             yield return null;
         }
+
         movingCoroutine = null;
-        
     }
 
-    private void randomMoving()
-    {
-        Destin = new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 4f),transform.position.y);
-        transform.parent.localScale = new Vector3(transform.parent.localScale.x*Mathf.Sign(transform.parent.position.x-Destin.x), transform.parent.localScale.y,
+    private void randomMoving() {
+        Destin = new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 4f), transform.position.y);
+        transform.parent.localScale = new Vector3(transform.parent.localScale.x * Mathf.Sign(transform.parent.position.x - Destin.x),
+            transform.parent.localScale.y,
             transform.parent.localScale.z);
-        movingCoroutine = StartCoroutine(MoveCoroutine(transform.parent.gameObject, Destin,transform.localScale.x*6f/Vector3.Distance(transform.position,Destin)));
+        movingCoroutine = StartCoroutine(MoveCoroutine(transform.parent.gameObject, Destin,
+            transform.localScale.x * 6f / Vector3.Distance(transform.position, Destin)));
     }
 
-    private void Update()
-    {
-        if (movingCoroutine == null && Random.value< 0.2 * Time.deltaTime)
-        {
+    private void Update() {
+        if (isCaught) return;
+        if (movingCoroutine == null && Random.value < 0.2 * Time.deltaTime) {
             randomMoving();
         }
     }
-    
-   
 }
