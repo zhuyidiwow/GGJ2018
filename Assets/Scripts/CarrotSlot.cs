@@ -8,10 +8,11 @@ public class CarrotSlot : MonoBehaviour {
     public GameObject DisappointSign;
     public GameObject HappySign;
 
-    private GameObject currentSign;
+    [HideInInspector] public Food Carrot = null;
     
-    private Food carrot = null;
+    private GameObject currentSign;
     private bool isGrown;
+    private bool isGone;
 
     private Coroutine destroyCoroutine;
     private Coroutine showSignCoroutine;
@@ -30,18 +31,22 @@ public class CarrotSlot : MonoBehaviour {
             if (food.IsInField) return;
             switch (food.FoodEnum) {
                 case Food.EFood.CARROT:
-                    if (carrot == null) {
+                    if (Carrot == null) {
+                        food.Stop();
+                        food.transform.parent = transform;
                         food.transform.position = transform.position;
                         food.transform.rotation = transform.rotation;
                         food.IsInField = true;
-                        carrot = food;
+                        Carrot = food;
+                        isGone = false;
                         showSignCoroutine = StartCoroutine(ShowSign(YellForShitSign));
                         destroyCoroutine = StartCoroutine(DestroyCoroutine());
                     }
                     break;
                 case Food.EFood.SHIT:
-                    if (carrot != null) {
+                    if (Carrot != null && !isGone) {
                         isGrown = true;
+                        Carrot.transform.localScale *= 1.4f;
                         if (destroyCoroutine != null) StopCoroutine(destroyCoroutine);
                         if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
                         showSignCoroutine = StartCoroutine(ShowSign(HappySign));
@@ -53,20 +58,41 @@ public class CarrotSlot : MonoBehaviour {
         }
     }
 
+    public void ResetSlot() {
+        if (destroyCoroutine != null) StopCoroutine(destroyCoroutine);
+        if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
+        YellForShitSign.SetActive(false);
+        DisappointSign.SetActive(false);
+        HappySign.SetActive(false);
+        Carrot = null;
+        isGone = false;
+        isGrown = false;
+    }
+    
+    public void ShrinkAllSign() {
+        if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
+        if (DisappointSign.activeSelf) StartCoroutine(ShrinkCoroutine(DisappointSign));
+        if (YellForShitSign.activeSelf) StartCoroutine(ShrinkCoroutine(YellForShitSign));
+        if (HappySign.activeSelf) StartCoroutine(ShrinkCoroutine(HappySign));
+    }
+
     private IEnumerator DestroyCoroutine() {
-        yield return new WaitForSeconds(CarrotStayTime);
         
+        yield return new WaitForSeconds(CarrotStayTime);
+        isGone = true;
         if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
         showSignCoroutine = StartCoroutine(ShowSign(DisappointSign));
-        yield return new WaitForSeconds(0.6f);
-        
-        Destroy(carrot);
-        carrot = null;
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(ShrinkCoroutine(DisappointSign));
+        StartCoroutine(ShrinkCoroutine(Carrot.gameObject));
+        yield return new WaitForSeconds(0.3f);
+        Destroy(Carrot.gameObject);
+        Carrot = null;
     }
 
     private IEnumerator ShowSign(GameObject Sign, float duration1 = 0.4f, float duration2 = 0.2f, float largeScale = 1.4f) {
         if (currentSign != null) {
-            StartCoroutine(ShrinkSign(currentSign));
+            StartCoroutine(ShrinkCoroutine(currentSign));
             yield return new WaitForSeconds(0.3f);
         }
         
@@ -76,14 +102,14 @@ public class CarrotSlot : MonoBehaviour {
         
         float elapsedTime = 0f;
         while (elapsedTime < duration1) {
-            transform.localScale = Vector3.Lerp(Vector3.zero, largeScale * originalScale, elapsedTime / duration1);
+            Sign.transform.localScale = Vector3.Lerp(Vector3.zero, largeScale * originalScale, elapsedTime / duration1);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         elapsedTime = 0f;
         while (elapsedTime < duration2) {
-            transform.localScale = Vector3.Lerp(largeScale * originalScale, originalScale, elapsedTime / duration2);
+            Sign.transform.localScale = Vector3.Lerp(largeScale * originalScale, originalScale, elapsedTime / duration2);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -94,14 +120,14 @@ public class CarrotSlot : MonoBehaviour {
         }
     }
 
-    private IEnumerator ShrinkSign(GameObject Sign, float duration = 0.3f) {
-        Vector3 originalScale = Sign.transform.localScale;
+    private IEnumerator ShrinkCoroutine(GameObject O, float duration = 0.3f) {
+        Vector3 originalScale = O.transform.localScale;
         float elapsedTime = 0f;
         while (elapsedTime < duration) {
-            transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, elapsedTime / duration);
+            O.transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Sign.SetActive(false);
+        O.SetActive(false);
     }
 }

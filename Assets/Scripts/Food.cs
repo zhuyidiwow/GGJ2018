@@ -71,6 +71,10 @@ public class Food : MonoBehaviour {
         }
     }
 
+    public void Stop() {
+        state = 2;
+    }
+
     public void Eat() {
         Destroy(gameObject);
     }
