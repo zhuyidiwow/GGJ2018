@@ -70,7 +70,11 @@ public class Rabbit : MonoBehaviour {
 
     private void Love(int pNo, bool useEffect = true) {
         LoveEffect.transform.parent = null;
-        LoveEffect.SetActive(true);
+        if (!useEffect) {
+            if (Random.value < 0.2f) {
+                LoveEffect.SetActive(true);
+            }
+        }
         RunTo(GameManager.Instance.GetPlayer(pNo), useEffect);
         Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
         Destroy(LoveEffect, 3f);
