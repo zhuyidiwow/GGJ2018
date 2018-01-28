@@ -234,21 +234,6 @@ Prefab:
       propertyPath: RabbitAreaCenter
       value: 
       objectReference: {fileID: 1649769428}
-    - target: {fileID: 212103214118197546, guid: 2b266df2b3b34534b808ec5218c21556,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212103214118197546, guid: 2b266df2b3b34534b808ec5218c21556,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212103214118197546, guid: 2b266df2b3b34534b808ec5218c21556,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
   m_IsPrefabParent: 0

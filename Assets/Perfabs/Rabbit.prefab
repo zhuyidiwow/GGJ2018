@@ -684,6 +684,13 @@ MonoBehaviour:
   CaughtClips:
   - {fileID: 8300000, guid: 81c4d713114cf6b4088c87715bd3fac5, type: 3}
   - {fileID: 8300000, guid: dbb0ce105251c2c40a0d7fbc1299ba8b, type: 3}
+  ComeOutClips:
+  - {fileID: 8300000, guid: df13709c69e64a24aaa52a5835a61974, type: 3}
+  - {fileID: 8300000, guid: 22dd7bcb0405ba04585e5313d20ed2df, type: 3}
+  - {fileID: 8300000, guid: 2652b3f2e3fb67c49814f28ed97fb4b8, type: 3}
+  EatShitClips:
+  - {fileID: 8300000, guid: 75eefebdd018b114bbddfff4e2f5ee2a, type: 3}
+  - {fileID: 8300000, guid: ab0c90362a4de6645ab55d1317a55094, type: 3}
   LoveEffect: {fileID: 1701005568059684}
   HateEffect: {fileID: 1209635276387950}
 --- !u!198 &198140604916364430
