@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class RabitGenerator : MonoBehaviour {
 
@@ -40,7 +41,8 @@ public class RabitGenerator : MonoBehaviour {
 	private void GenerateOne() {
 		float x = Random.Range(XRange.x, XRange.y);
 		float y = Random.Range(YRange.x, YRange.y);
-		Instantiate(RabbitPrefab, new Vector3(x, y, 0f), Quaternion.identity, transform);
+		GameObject rabit = Instantiate(RabbitPrefab, new Vector3(x, y, 0f), Quaternion.identity, transform);
+		rabit.GetComponentInChildren<SpriteRenderer>().sortingOrder = Random.Range(0, 1000);
 		// Rabbit rabbit = o.GetComponent<Rabbit>();
 	}
 }
