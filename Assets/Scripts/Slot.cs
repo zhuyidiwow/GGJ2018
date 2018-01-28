@@ -28,9 +28,6 @@ public class Slot : MonoBehaviour {
 					IsHoldingFood = true;
 					food = incomingFood;
 					incomingFood.MoveToSlot(this);
-					if (food.CompareTag("Giant Carrot")) {
-						food.MoveSpeed = 5f;
-					}
 				}
 			}
 		}

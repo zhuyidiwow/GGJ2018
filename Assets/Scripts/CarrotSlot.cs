@@ -52,7 +52,6 @@ public class CarrotSlot : MonoBehaviour {
                     break;
                 case Food.EFood.SHIT:
                     if (Carrot != null && !isGone) {
-                        Destroy(food.gameObject);
                         isGrown = true;
                         Carrot.transform.localScale *= 1.5f;
                         Carrot.transform.position += Vector3.up * 0.09f;
@@ -61,8 +60,6 @@ public class CarrotSlot : MonoBehaviour {
                             Ring.gameObject.SetActive(false);  
                             TmProText.gameObject.SetActive(false);
                         }
-                        if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
-                        currentSign.SetActive(false);
                         showSignCoroutine = StartCoroutine(ShowSign(HappySign));
                     }
                     break;
@@ -128,7 +125,7 @@ public class CarrotSlot : MonoBehaviour {
         }
         
         Sign.SetActive(true);
-        currentSign = Sign;
+        currentSign = YellForShitSign;
         Vector3 originalScale = Vector3.one * 2.5f;
         
         float elapsedTime = 0f;
