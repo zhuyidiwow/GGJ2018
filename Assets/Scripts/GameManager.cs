@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public TextMeshProUGUI P1ScoreText;
 	public TextMeshProUGUI P2ScoreText;
 	public TextMeshProUGUI CountDownText;
+	public TextMeshProUGUI WinText;
 	
 	[Tooltip("In seconds")]
 	public float GameDuration;
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour {
 	public void StartGame() {
 		startTime = Time.time;
 		MusicManager.Instance.StartMusic();
+		WinText.text = "";
 		StartCoroutine(CountDownCoroutine());
 	}
 
@@ -76,18 +79,30 @@ public class GameManager : MonoBehaviour {
 		} else {
 			Tie();
 		}
+
+		StartCoroutine(RestartCoroutine());
+	}
+
+	IEnumerator RestartCoroutine() {
+		float elapsedTime = 0f;
+		while (elapsedTime < 10f) {
+			CountDownText.text = "Restarting in: " + ((int) (10f - elapsedTime)).ToString() + "s!";
+			yield return null;
+			elapsedTime += Time.deltaTime;
+		}
+		SceneManager.LoadScene("Menu");
 	}
 
 	private void P1Win() {
-		CountDownText.text = "P1 Wins!";
+		WinText.text = "P1 Wins!";
 	}
 
 	private void P2Win() {
-		CountDownText.text = "P2 Wins!";
+		WinText.text = "P2 Wins!";
 	}
 
 	private void Tie() {
-		CountDownText.text = "Tie!";
+		WinText.text = "Tie!";
 	}
 	
 	

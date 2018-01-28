@@ -9,6 +9,7 @@ public class Pointer : MonoBehaviour {
 
 	public bool UseAbsolotueControl = false;
 	public AudioClip ShootClip;
+	public GameObject Cannon;
 	
 	private Player player;
 	
@@ -20,6 +21,7 @@ public class Pointer : MonoBehaviour {
 	private float currentAngle;
 	private float lastFrameAngle;
 	private AudioSource audioSource;
+	private Coroutine shakeCoroutine;
 	
 	private void Start() {
 		player = transform.parent.GetComponent<Player>();
@@ -60,8 +62,14 @@ public class Pointer : MonoBehaviour {
 				}
 			}
 
-			if (GetTriggerDown() && !GameManager.Instance.IsGameOver) {
-				Fire();
+			if (GameManager.Instance != null) {
+				if (GetTriggerDown() && !GameManager.Instance.IsGameOver) {
+					Fire();
+				}
+			} else {
+				if (GetTriggerDown()) {
+					Fire();
+				}
 			}
 		}
 	}
@@ -74,8 +82,17 @@ public class Pointer : MonoBehaviour {
 			if (slot.IsHoldingFood) {
 				slot.ShootFood(this);
 				Utilities.Audio.PlayAudio(audioSource, ShootClip);
+				if (MenuManager.Instance != null) {
+					MenuManager.Instance.Shoot(player.GetPlayerNo());
+				} else {
+					StartCoroutine(ShakeCoroutine(Cannon));
+				}
+
+				
 			}
 		}
+
+		
 	}
 
 	private void Move() {
@@ -100,6 +117,25 @@ public class Pointer : MonoBehaviour {
 		return false;
 	}
 	
+	private IEnumerator ShakeCoroutine(GameObject objectToShake) {
+		float elapsedTime = 0f;
+		float duration = 0.2f;
+		Vector3 targetScale = 5f * Vector3.one;
+		while (elapsedTime < duration) {
+			objectToShake.transform.localScale = Vector3.Lerp(objectToShake.transform.localScale, targetScale, Time.deltaTime * 8f);
+			yield return null;
+			elapsedTime += Time.deltaTime;
+		}
+		
+		elapsedTime = 0f;
+		duration = 0.1f;
+		targetScale = 2.8f * Vector3.one;
+		while (elapsedTime < duration) {
+			objectToShake.transform.localScale = Vector3.Lerp(objectToShake.transform.localScale, targetScale, Time.deltaTime * 8f);
+			yield return null;
+			elapsedTime += Time.deltaTime;
+		}
+	}
 	
 
 
