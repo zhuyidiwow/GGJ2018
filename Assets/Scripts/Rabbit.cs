@@ -126,12 +126,21 @@ public class Rabbit : MonoBehaviour {
         
     }
 
+    private void randomMoving()
+    {
+        Destin = new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 4f),transform.position.y);
+        transform.parent.localScale = new Vector3(transform.parent.localScale.x*Mathf.Sign(transform.parent.position.x-Destin.x), transform.parent.localScale.y,
+            transform.parent.localScale.z);
+        movingCoroutine = StartCoroutine(MoveCoroutine(transform.parent.gameObject, Destin,transform.localScale.x*6f/Vector3.Distance(transform.position,Destin)));
+    }
+
     private void Update()
     {
         if (movingCoroutine == null && Random.value< 0.2 * Time.deltaTime)
         {
-            Destin = new Vector3(Random.Range(-2f, 2f), Random.Range(-4f, 4f),transform.position.y);
-            movingCoroutine = StartCoroutine(MoveCoroutine(transform.parent.gameObject, Destin,transform.localScale.x*6f/Vector3.Distance(transform.position,Destin)));
+            randomMoving();
         }
     }
+    
+   
 }
