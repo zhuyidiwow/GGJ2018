@@ -64,6 +64,7 @@ public class Rabbit : MonoBehaviour {
     }
 
     private void RunTo(Player player) {
+        player.GetScore();
         Vector3 destination = player.GetRabbitAreaCenter();
         destination += new Vector3(player.RabbitAreaSize.x * Random.Range(-0.5f, 0.5f), player.RabbitAreaSize.y * Random.Range(-0.5f, 0.5f));
         destination.z = transform.position.z;

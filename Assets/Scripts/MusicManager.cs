@@ -11,10 +11,10 @@ public class MusicManager : MonoBehaviour {
 	
 	private void Start() {
 		audioSource = GetComponent<AudioSource>();
-		// StartMusic();
+		if (Instance == null) Instance = this;
 	}
 
-	void StartMusic() {
+	public void StartMusic() {
 		Utilities.Audio.PlayAudio(audioSource, MainBGM, 1, true);	
 	}
 }
