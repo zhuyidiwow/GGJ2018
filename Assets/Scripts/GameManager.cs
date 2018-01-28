@@ -1,28 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance;
-	[HideInInspector] public Player P1;
-	[HideInInspector] public Player P2;
-
-	public Text P1ScoreText;
-	public Text P2ScoreText;
+	public Player P1;
+	public Player P2;
 	
 	[Tooltip("In seconds")]
 	public float GameDuration;
 	public AnimationCurve AmountCurve;
-	[HideInInspector] public bool IsGameOver;
+	public bool IsGameOver = false;
 	
 	private float startTime;
 		
 	private void Awake() {
 		if (Instance == null) Instance = this;
-	}
-
-	private void Start() {
-		StartGame();
 	}
 
 	private void Update() {
@@ -37,11 +29,6 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void UpdateScore() {
-		P1ScoreText.text = P1.Score.ToString();
-		P2ScoreText.text = P2.Score.ToString();
-	}
-	
 	public float GetProgress() {
 		return (Time.time - startTime) / GameDuration;
 	}
@@ -52,7 +39,6 @@ public class GameManager : MonoBehaviour {
 	
 	public void StartGame() {
 		startTime = Time.time;
-		MusicManager.Instance.StartMusic();
 	}
 
 	public void TimeUp() {
