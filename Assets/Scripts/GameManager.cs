@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +9,10 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 	[HideInInspector] public Player P1;
 	[HideInInspector] public Player P2;
+	
 	public TextMeshProUGUI P1ScoreText;
 	public TextMeshProUGUI P2ScoreText;
+	public TextMeshProUGUI CountDownText;
 	
 	[Tooltip("In seconds")]
 	public float GameDuration;
@@ -53,14 +57,37 @@ public class GameManager : MonoBehaviour {
 	public void StartGame() {
 		startTime = Time.time;
 		MusicManager.Instance.StartMusic();
+		StartCoroutine(CountDownCoroutine());
 	}
 
-	public void TimeUp() {
-		IsGameOver = true;
+	private IEnumerator CountDownCoroutine() {
+		while (!IsGameOver) {
+			CountDownText.text = ((int)(GameDuration - (Time.time - startTime))).ToString();
+			yield return new WaitForSeconds(0.1f);
+		}
 	}
-		
-	public void Win(EPlayer ePlayer) {
+
+	private void TimeUp() {
 		IsGameOver = true;
+		if (P1.Score > P2.Score) {
+			P1Win();
+		} else if (P1.Score < P2.Score) {
+			P2Win();
+		} else {
+			Tie();
+		}
+	}
+
+	private void P1Win() {
+		CountDownText.text = "P1 Wins!";
+	}
+
+	private void P2Win() {
+		CountDownText.text = "P2 Wins!";
+	}
+
+	private void Tie() {
+		CountDownText.text = "Tie!";
 	}
 	
 	
