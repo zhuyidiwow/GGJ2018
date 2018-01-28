@@ -56,7 +56,7 @@ public class Rabbit : MonoBehaviour {
                     Love(incomingFood.GetPlayerNo());
                     break;
                 case Food.EFood.GIANT_CARROT:
-                    Love(incomingFood.GetPlayerNo());
+                    Love(incomingFood.GetPlayerNo(), false);
                     break;
                 case Food.EFood.SHIT:
                     Hate(incomingFood.GetPlayerNo());
@@ -68,10 +68,12 @@ public class Rabbit : MonoBehaviour {
         }
     }
 
-    private void Love(int pNo) {
-        RunTo(GameManager.Instance.GetPlayer(pNo));
-        Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
+    private void Love(int pNo, bool useEffect = true) {
+        LoveEffect.transform.parent = null;
         LoveEffect.SetActive(true);
+        RunTo(GameManager.Instance.GetPlayer(pNo), useEffect);
+        Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
+        Destroy(LoveEffect, 3f);
     }
 
     private void Hate(int pNo) {
@@ -79,20 +81,25 @@ public class Rabbit : MonoBehaviour {
         RunTo(GameManager.Instance.GetPlayer(pNo));
         Utilities.Audio.PlayAudio(audioSource, EatShitClips[Random.Range(0, EatShitClips.Length)]);
         HateEffect.SetActive(true);
+        Destroy(LoveEffect, 3f);
     }
 
-    private void RunTo(Player player) {
-        
+    private void RunTo(Player player, bool useCoroutine = true) {
+        Destroy(GetComponent<Collider2D>());
         player.GetScore();
         player.AddRabit(this);
         Vector3 destination = player.GetRabbitAreaCenter();
         destination += new Vector3(player.RabbitAreaSize.x * Random.Range(-0.5f, 0.5f), player.RabbitAreaSize.y * Random.Range(-0.5f, 0.5f));
         destination.z = transform.position.z;
-        StartCoroutine(MoveCoroutine(transform.parent.gameObject, destination));
         
+        if (useCoroutine) StartCoroutine(MoveCoroutine(transform.parent.gameObject, destination));
+        else transform.parent.position = destination;
+        
+        transform.parent.parent = null;
+
     }
 
-    private IEnumerator MoveCoroutine(GameObject go, Vector3 destination, float factor = 5f) {
+    private IEnumerator MoveCoroutine(GameObject go, Vector3 destination, float factor = 10f) {
         while (Vector3.Distance(go.transform.position, destination) > 0.01f) {
             go.transform.position = Vector3.Lerp(go.transform.position, destination, Time.deltaTime * factor);
             yield return null;

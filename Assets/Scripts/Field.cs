@@ -6,8 +6,15 @@ public class Field : MonoBehaviour {
 
 	public GameObject GiantCarrotPrefab;
 	public Player Player;
-	private int CarrotCount;
+	public AudioClip MergeSound;
 	
+	private int CarrotCount;
+	private AudioSource audioSource;
+
+	private void Start() {
+		audioSource = GetComponent<AudioSource>();
+	}
+
 	public void GrowOne() {
 		CarrotCount++;
 		if (CarrotCount == 3) {
@@ -42,6 +49,8 @@ public class Field : MonoBehaviour {
 		foreach (Food carrot in carrots) {
 			Destroy(carrot.gameObject);
 		}
+		
+		Utilities.Audio.PlayAudio(audioSource, MergeSound);
 		
 		GameObject giant = Instantiate(GiantCarrotPrefab, transform.position + Vector3.up * 0.2f, transform.rotation);
 		giant.transform.parent = null;
