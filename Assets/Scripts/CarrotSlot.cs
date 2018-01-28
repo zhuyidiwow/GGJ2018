@@ -48,7 +48,6 @@ public class CarrotSlot : MonoBehaviour {
                         isGrown = true;
                         Carrot.transform.localScale *= 1.4f;
                         if (destroyCoroutine != null) StopCoroutine(destroyCoroutine);
-                        if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
                         showSignCoroutine = StartCoroutine(ShowSign(HappySign));
                     }
                     break;
@@ -98,7 +97,7 @@ public class CarrotSlot : MonoBehaviour {
         
         Sign.SetActive(true);
         currentSign = YellForShitSign;
-        Vector3 originalScale = Sign.transform.localScale;
+        Vector3 originalScale = Vector3.one;
         
         float elapsedTime = 0f;
         while (elapsedTime < duration1) {

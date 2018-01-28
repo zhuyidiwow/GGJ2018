@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
 public class FoodGenerator : MonoBehaviour {
-    public GameObject[] foods;
+    public GameObject Carrot;
+    public GameObject Shit;
     
     public float AmountPerSecond;
-    public Transform FoodContainer;
-    public Transform Player;
+    
+    public Vector3 LeftCrowd;
+    public Vector3 RightCrowd;
 
     public float InitialSpeed;
     public float RotationSpeed;
@@ -15,16 +17,25 @@ public class FoodGenerator : MonoBehaviour {
 
     void Update() {
         if (Random.value / Time.deltaTime < AmountPerSecond) {
-            Generate(Random.Range(0, foods.Length),
-                transform.position + transform.up * PositionDistribution.Evaluate(Random.value) * Height * 2 + new Vector3(0, -Height, -0.1f));
+            Vector3 offset = transform.up * PositionDistribution.Evaluate(Random.value) * Height * 2 + new Vector3(0, -Height, -0.1f);
+            Generate(offset);
         }
     }
 
-    void Generate(int index, Vector3 place) {
-        GameObject food = Instantiate(foods[index]);
-        food.transform.position = place;
-        food.transform.parent = FoodContainer;
-        food.GetComponent<Food>().Initialize(Player, InitialSpeed, RotationSpeed);
+    void Generate(Vector3 offset) {
+        GameObject food1;
+        GameObject food2;
+        
+        if (Random.value < 0.8f) {
+            food1 = Instantiate(Carrot, LeftCrowd + offset, Quaternion.identity, transform);
+            food2 = Instantiate(Carrot, RightCrowd + offset, Quaternion.identity, transform);
+        } else {
+            food1 = Instantiate(Shit, LeftCrowd + offset, Quaternion.identity, transform);
+            food2 = Instantiate(Shit, RightCrowd + offset, Quaternion.identity, transform);
+        }
+
+        food1.GetComponent<Food>().Initialize(GameManager.Instance.P1.transform, InitialSpeed, RotationSpeed);
+        food2.GetComponent<Food>().Initialize(GameManager.Instance.P2.transform, InitialSpeed, RotationSpeed);
         
     }
 }

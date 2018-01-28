@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 50964799440177554}
   - component: {fileID: 60460336945376170}
   m_Layer: 0
-  m_Name: Carrot
-  m_TagString: Food
+  m_Name: Giant Carrot
+  m_TagString: Giant Carrot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

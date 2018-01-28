@@ -34,13 +34,15 @@ public class Field : MonoBehaviour {
 			elapsedTime += Time.deltaTime;
 		}
 
-		
 		foreach (Food carrot in carrots) {
 			Destroy(carrot.gameObject);
 		}
 		
 		GameObject giant = Instantiate(GiantCarrotPrefab, transform.position, transform.rotation);
-
+		giant.transform.parent = null;
+		
+		Debug.Log(giant.name + " parent set to: " + giant.transform.parent);
+		giant.transform.localScale = 0.5f * Vector3.one;
 		StartCoroutine(PopCoroutine(giant));
 		
 		CarrotCount = 0;

@@ -1184,7 +1184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64585c1ce2d6f9943a19c9dfbe2c83a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GiantCarrotPrefab: {fileID: 1322214817649538, guid: 6b51b398507c8934aac0f0047d1bb3d7,
+  GiantCarrotPrefab: {fileID: 1095967326368540, guid: b6cbc9bde13fb4344965dd49521857b3,
     type: 2}
 --- !u!4 &1011151648
 Transform:
