@@ -5,6 +5,8 @@ using UnityEngine;
 public class Rabbit : MonoBehaviour {
     public Vector2 ScaleRange;
     public AudioClip[] CaughtClips;
+    public GameObject LoveEffect;
+    public GameObject HateEffect;
     
     private Animator animator;
     private bool isHit;
@@ -18,7 +20,8 @@ public class Rabbit : MonoBehaviour {
         transform.localScale *= Random.Range(ScaleRange.x, ScaleRange.y);
         originalScale = transform.localScale;
         StartCoroutine(PopCoroutine());
-        
+        LoveEffect.SetActive(false);
+        HateEffect.SetActive(false);
     }
 
     private IEnumerator PopCoroutine() {
@@ -65,20 +68,24 @@ public class Rabbit : MonoBehaviour {
     private void Love(int pNo) {
         RunTo(GameManager.Instance.GetPlayer(pNo));
         Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
+        LoveEffect.SetActive(true);
     }
 
     private void Hate(int pNo) {
         pNo = pNo == 1 ? 2 : 1;
         RunTo(GameManager.Instance.GetPlayer(pNo));
+        HateEffect.SetActive(true);
     }
 
     private void RunTo(Player player) {
         
         player.GetScore();
+        player.AddRabit(this);
         Vector3 destination = player.GetRabbitAreaCenter();
         destination += new Vector3(player.RabbitAreaSize.x * Random.Range(-0.5f, 0.5f), player.RabbitAreaSize.y * Random.Range(-0.5f, 0.5f));
         destination.z = transform.position.z;
         StartCoroutine(MoveCoroutine(transform.parent.gameObject, destination));
+        
     }
 
     private IEnumerator MoveCoroutine(GameObject go, Vector3 destination, float factor = 5f) {
@@ -86,5 +93,6 @@ public class Rabbit : MonoBehaviour {
             go.transform.position = Vector3.Lerp(go.transform.position, destination, Time.deltaTime * factor);
             yield return null;
         }
+        
     }
 }

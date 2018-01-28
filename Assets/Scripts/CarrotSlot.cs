@@ -158,6 +158,5 @@ public class CarrotSlot : MonoBehaviour {
         }
 
         if (O != currentSign) currentSign = null;
-        O.SetActive(false);
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public enum EPlayer {
 	Left,
@@ -13,7 +14,8 @@ public class Player : MonoBehaviour {
 	public float InputThreshold = 0.5f;
 	public Transform RabbitAreaCenter;
 	public Vector2 RabbitAreaSize;
-
+	
+	private Queue<Rabbit> rabbits = new Queue<Rabbit>();
 	private void Start() {
 		switch (EPlayer) {
 			case EPlayer.Left:
@@ -35,6 +37,13 @@ public class Player : MonoBehaviour {
 	public void GetScore() {
 		Score++;
 		GameManager.Instance.UpdateScoreText();
+	}
+
+	public void AddRabit(Rabbit rabbit) {
+		rabbits.Enqueue(rabbit);
+		if (rabbits.Count > 10f) {
+			Destroy(rabbits.Dequeue().gameObject);
+		}
 	}
 
 	public int GetPlayerNo() {
