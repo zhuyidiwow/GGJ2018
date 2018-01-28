@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 99a0a8d98633bcd459d0d58dff8029ea
-timeCreated: 1517114997
+guid: e681e95cfa5829a49836931446349e50
+timeCreated: 1517114920
 licenseType: Pro
 AudioImporter:
-  externalObjects: {}
   serializedVersion: 6
   defaultSettings:
     loadType: 0
