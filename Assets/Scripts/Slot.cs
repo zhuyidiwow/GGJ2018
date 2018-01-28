@@ -39,7 +39,7 @@ public class Slot : MonoBehaviour {
 
 	public void ShootFood(Pointer pointer) {
 		food.transform.position = pointer.transform.position;
-		food.transform.parent = GameObject.Find("FoodContainer").transform;
+		food.transform.parent = GameObject.Find("Food Generator").transform;
 		food.Shoot(pointer.transform.position - transform.parent.parent.position, player.GetPlayerNo());
 		
 		food = null;
