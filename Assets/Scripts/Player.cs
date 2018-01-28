@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 	public int Score = 0;
 	public bool ShouldReceiveInput = true;
 	public float InputThreshold = 0.5f;
+	public Transform RabbitAreaCenter;
+	public Vector2 RabbitAreaSize;
 
 	private void Start() {
 		switch (EPlayer) {
@@ -26,6 +28,10 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public Vector3 GetRabbitAreaCenter() {
+		return RabbitAreaCenter.position;
+	}
+	
 	public void GetScore() {
 			
 	}

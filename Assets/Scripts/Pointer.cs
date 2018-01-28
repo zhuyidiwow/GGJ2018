@@ -82,7 +82,7 @@ public class Pointer : MonoBehaviour {
 	private bool GetTriggerDown() {
 		
 		if (Math.Abs(Input.GetAxis(triggerAxis) - 1) < 0.1f && !hasJustFired) {
-			hasJustFired = true;
+			//hasJustFired = true;
 			return true;
 		}
 		
