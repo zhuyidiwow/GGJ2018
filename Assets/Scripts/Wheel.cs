@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Wheel : MonoBehaviour {
+	public AudioClip ke;
 	
 	private Player player;
 	
@@ -11,11 +12,14 @@ public class Wheel : MonoBehaviour {
 	private string horiAxis;
 	private string verAxis;
 	private bool isNewRotation = true;
-
+	[SerializeField] private float accumulatedAngle;
+	private AudioSource audioSource;
+	
 	private void Start() {
 		player = transform.parent.GetComponent<Player>();
 		horiAxis = "Wheel" + player.GetPlayerNo() + "Hori";
 		verAxis = "Wheel" + player.GetPlayerNo() + "Ver";
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Update() {
@@ -31,6 +35,12 @@ public class Wheel : MonoBehaviour {
 			float dAngle = currentAngle - lastFrameAngle; // counterclock wise, in deg
 			transform.Rotate(0f, 0f, dAngle);
 			lastFrameAngle = currentAngle;
+			accumulatedAngle += Mathf.Abs(dAngle);
+			
+			if (accumulatedAngle > 60f) {
+				Utilities.Audio.PlayAudio(audioSource, ke, 0.5f);
+				accumulatedAngle = 0f;
+			}
 		} else {
 			isNewRotation = true;
 		}

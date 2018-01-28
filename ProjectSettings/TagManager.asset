@@ -49,11 +49,11 @@ TagManager:
   - name: Foreground
     uniqueID: 3432140113
     locked: 0
-  - name: People
-    uniqueID: 405235715
-    locked: 0
   - name: Player
     uniqueID: 241468267
+    locked: 0
+  - name: Shadow
+    uniqueID: 644011845
     locked: 0
   - name: Items
     uniqueID: 4172022183

@@ -37,8 +37,9 @@ public class CarrotSlot : MonoBehaviour {
                     if (Carrot == null) {
                         food.Stop();
                         food.transform.parent = transform;
-                        food.transform.position = transform.position;
+                        food.transform.position = transform.position + Vector3.up * 0.2f;
                         food.transform.rotation = transform.rotation;
+                        food.transform.Rotate(0f, 0f, 30f);
                         food.IsInField = true;
                         Carrot = food;
                         isGone = false;
@@ -49,7 +50,8 @@ public class CarrotSlot : MonoBehaviour {
                 case Food.EFood.SHIT:
                     if (Carrot != null && !isGone) {
                         isGrown = true;
-                        Carrot.transform.localScale *= 1.4f;
+                        Carrot.transform.localScale *= 1.5f;
+                        Carrot.transform.position += Vector3.up * 0.09f;
                         if (destroyCoroutine != null) {
                             StopCoroutine(destroyCoroutine);
                             Ring.gameObject.SetActive(false);    

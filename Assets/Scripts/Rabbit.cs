@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Rabbit : MonoBehaviour {
     public Vector2 ScaleRange;
+    public AudioClip[] CaughtClips;
     
     private Animator animator;
     private bool isHit;
     private bool isReady;
     private Vector3 originalScale;
+    private AudioSource audioSource;
     
     void Start() {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         transform.localScale *= Random.Range(ScaleRange.x, ScaleRange.y);
         originalScale = transform.localScale;
         StartCoroutine(PopCoroutine());
@@ -61,6 +64,7 @@ public class Rabbit : MonoBehaviour {
 
     private void Love(int pNo) {
         RunTo(GameManager.Instance.GetPlayer(pNo));
+        Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
     }
 
     private void Hate(int pNo) {
@@ -69,6 +73,7 @@ public class Rabbit : MonoBehaviour {
     }
 
     private void RunTo(Player player) {
+        
         player.GetScore();
         Vector3 destination = player.GetRabbitAreaCenter();
         destination += new Vector3(player.RabbitAreaSize.x * Random.Range(-0.5f, 0.5f), player.RabbitAreaSize.y * Random.Range(-0.5f, 0.5f));

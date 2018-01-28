@@ -8,6 +8,8 @@ public class Pointer : MonoBehaviour {
 	public float Distance;
 
 	public bool UseAbsolotueControl = false;
+	public AudioClip ShootClip;
+	
 	private Player player;
 	
 	private string horiAxis;
@@ -17,12 +19,15 @@ public class Pointer : MonoBehaviour {
 	private bool isNewRotation = true;
 	private float currentAngle;
 	private float lastFrameAngle;
+	private AudioSource audioSource;
 	
 	private void Start() {
 		player = transform.parent.GetComponent<Player>();
 		horiAxis = "Pointer" + player.GetPlayerNo() + "Hori";
 		verAxis = "Pointer" + player.GetPlayerNo() + "Ver";
 		triggerAxis = "P" + player.GetPlayerNo() + "Fire";
+
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Update() {
@@ -68,6 +73,7 @@ public class Pointer : MonoBehaviour {
 			Slot slot = hit.collider.GetComponent<Slot>();
 			if (slot.IsHoldingFood) {
 				slot.ShootFood(this);
+				Utilities.Audio.PlayAudio(audioSource, ShootClip);
 			}
 		}
 	}
