@@ -26,10 +26,11 @@ public class Field : MonoBehaviour {
 	}
 
 	private IEnumerator GrowCarrotCoroutine(List<Food> carrots) {
+		
 		float elapsedTime = 0f;
 		while (elapsedTime < 0.8f) {
 			foreach (Food carrot in carrots) {
-				carrot.transform.position = Vector3.Lerp(carrot.transform.position, transform.position, Time.deltaTime * 2f);
+				carrot.transform.position = Vector3.Lerp(carrot.transform.position, transform.position + Vector3.up * 0.2f, Time.deltaTime * 2f);
 			}
 			yield return null;
 			elapsedTime += Time.deltaTime;
@@ -39,7 +40,7 @@ public class Field : MonoBehaviour {
 			Destroy(carrot.gameObject);
 		}
 		
-		GameObject giant = Instantiate(GiantCarrotPrefab, transform.position, transform.rotation);
+		GameObject giant = Instantiate(GiantCarrotPrefab, transform.position + Vector3.up * 0.2f, transform.rotation);
 		giant.transform.parent = null;
 		
 		giant.transform.localScale = 0.5f * Vector3.one;

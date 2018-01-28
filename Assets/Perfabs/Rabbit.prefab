@@ -500,8 +500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScaleRange: {x: 0.6, y: 1.5}
   CaughtClips:
-  - {fileID: 8300000, guid: c35b21fc3c18aa74aa864def194883cd, type: 3}
-  - {fileID: 8300000, guid: bbc190a71f3c9c44e9f3948b02a32d32, type: 3}
+  - {fileID: 8300000, guid: 81c4d713114cf6b4088c87715bd3fac5, type: 3}
+  - {fileID: 8300000, guid: dbb0ce105251c2c40a0d7fbc1299ba8b, type: 3}
 --- !u!212 &212029929573062538
 SpriteRenderer:
   m_ObjectHideFlags: 1

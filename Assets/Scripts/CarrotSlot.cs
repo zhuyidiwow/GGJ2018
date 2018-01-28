@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class CarrotSlot : MonoBehaviour {
     public GameObject DisappointSign;
     public GameObject HappySign;
     public Image Ring;
+    public TextMeshProUGUI TmProText;
     
     [HideInInspector] public Food Carrot = null;
     
@@ -24,6 +26,7 @@ public class CarrotSlot : MonoBehaviour {
         DisappointSign.SetActive(false);
         HappySign.SetActive(false);
         Ring.gameObject.SetActive(false);
+        TmProText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -54,7 +57,8 @@ public class CarrotSlot : MonoBehaviour {
                         Carrot.transform.position += Vector3.up * 0.09f;
                         if (destroyCoroutine != null) {
                             StopCoroutine(destroyCoroutine);
-                            Ring.gameObject.SetActive(false);    
+                            Ring.gameObject.SetActive(false);  
+                            TmProText.gameObject.SetActive(false);
                         }
                         showSignCoroutine = StartCoroutine(ShowSign(HappySign));
                     }
@@ -69,6 +73,7 @@ public class CarrotSlot : MonoBehaviour {
         if (destroyCoroutine != null) {
             StopCoroutine(destroyCoroutine);
             Ring.gameObject.SetActive(false);
+            TmProText.gameObject.SetActive(false);
         }
         if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
         YellForShitSign.SetActive(false);
@@ -89,16 +94,18 @@ public class CarrotSlot : MonoBehaviour {
     private IEnumerator DestroyCoroutine() {
         yield return new WaitForSeconds(0.6f);
         Ring.gameObject.SetActive(true);
+        TmProText.gameObject.SetActive(true);
         float elapsedTime = 0.6f;
         while (elapsedTime < CarrotStayTime) {
             float percentage = elapsedTime / CarrotStayTime;
             Ring.fillAmount = 1f - percentage;
             Ring.color = Color.Lerp(Color.green, Color.red, percentage);
+            // TmProText.text = (CarrotStayTime - elapsedTime).ToString().Substring(0, 4);
             yield return null;
             elapsedTime += Time.deltaTime;
         }
         Ring.gameObject.SetActive(false);
-        
+        TmProText.text = "";
         isGone = true;
         if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
         showSignCoroutine = StartCoroutine(ShowSign(DisappointSign));
@@ -119,7 +126,7 @@ public class CarrotSlot : MonoBehaviour {
         
         Sign.SetActive(true);
         currentSign = YellForShitSign;
-        Vector3 originalScale = Vector3.one;
+        Vector3 originalScale = Vector3.one * 2.5f;
         
         float elapsedTime = 0f;
         while (elapsedTime < duration1) {
