@@ -55,6 +55,12 @@ TagManager:
   - name: Shadow
     uniqueID: 644011845
     locked: 0
+  - name: Cannon Btm
+    uniqueID: 1608453139
+    locked: 0
+  - name: Cannon Top
+    uniqueID: 4258142537
+    locked: 0
   - name: Items
     uniqueID: 4172022183
     locked: 0

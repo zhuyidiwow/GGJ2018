@@ -11,6 +11,7 @@ public class RabitGenerator : MonoBehaviour {
 	public Vector2 InteralRange;
 	public int BaseAmount;
 	public AnimationCurve GenerateCurve;
+	public int MaxLimit;
 
 	private void Start() {
 		StartGenerating();
@@ -22,7 +23,10 @@ public class RabitGenerator : MonoBehaviour {
 	
 	private IEnumerator GenerateCoroutine() {
 		while (!GameManager.Instance.IsGameOver) {
-			Generate((int) (BaseAmount * GenerateCurve.Evaluate(GameManager.Instance.GetProgress())));
+			if (transform.childCount < MaxLimit) {
+				Generate((int) (BaseAmount * GenerateCurve.Evaluate(GameManager.Instance.GetProgress())));
+			}
+
 			yield return new WaitForSeconds(Random.Range(InteralRange.x, InteralRange.y));
 		}	
 	}

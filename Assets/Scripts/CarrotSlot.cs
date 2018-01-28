@@ -60,6 +60,8 @@ public class CarrotSlot : MonoBehaviour {
                             Ring.gameObject.SetActive(false);  
                             TmProText.gameObject.SetActive(false);
                         }
+                        if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
+                        currentSign.SetActive(false);
                         showSignCoroutine = StartCoroutine(ShowSign(HappySign));
                     }
                     break;
@@ -125,7 +127,7 @@ public class CarrotSlot : MonoBehaviour {
         }
         
         Sign.SetActive(true);
-        currentSign = YellForShitSign;
+        currentSign = Sign;
         Vector3 originalScale = Vector3.one * 2.5f;
         
         float elapsedTime = 0f;
@@ -158,6 +160,5 @@ public class CarrotSlot : MonoBehaviour {
         }
 
         if (O != currentSign) currentSign = null;
-        O.SetActive(false);
     }
 }

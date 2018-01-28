@@ -82,7 +82,7 @@ public class Pointer : MonoBehaviour {
 		float angleInRad = currentAngle * Mathf.Deg2Rad;
 		Vector3 posOffset = Distance * new Vector3(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad), 0f);
 		transform.position = player.transform.position + posOffset;
-		transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+		transform.rotation = Quaternion.Euler(0, 0, currentAngle - 90f);
 	}
 	
 	private bool GetTriggerDown() {
