@@ -17,16 +17,30 @@ public class Player : MonoBehaviour {
 	
 	private Queue<Rabbit> rabbits = new Queue<Rabbit>();
 	private void Start() {
-		switch (EPlayer) {
-			case EPlayer.Left:
-				GameManager.Instance.P1 = this;
-				break;
-			case EPlayer.Right:
-				GameManager.Instance.P2 = this;
-				break;
-			default:
-				Debug.LogError("Player num");
-				break;
+		if (GameManager.Instance != null) {
+			switch (EPlayer) {
+				case EPlayer.Left:
+					GameManager.Instance.P1 = this;
+					break;
+				case EPlayer.Right:
+					GameManager.Instance.P2 = this;
+					break;
+				default:
+					Debug.LogError("Player num");
+					break;
+			}
+		} else {
+			switch (EPlayer) {
+				case EPlayer.Left:
+					MenuManager.Instance.P1 = this;
+					break;
+				case EPlayer.Right:
+					MenuManager.Instance.P2 = this;
+					break;
+				default:
+					Debug.LogError("Player num");
+					break;
+			}
 		}
 	}
 

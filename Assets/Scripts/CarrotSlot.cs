@@ -53,7 +53,7 @@ public class CarrotSlot : MonoBehaviour {
                 case Food.EFood.SHIT:
                     if (Carrot != null && !isGone) {
                         isGrown = true;
-                        Carrot.transform.localScale *= 1.5f;
+                        Carrot.transform.localScale *= 1.6f;
                         Carrot.transform.position += Vector3.up * 0.09f;
                         if (destroyCoroutine != null) {
                             StopCoroutine(destroyCoroutine);

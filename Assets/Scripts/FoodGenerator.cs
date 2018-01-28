@@ -34,8 +34,13 @@ public class FoodGenerator : MonoBehaviour {
             food2 = Instantiate(Shit, RightCrowd + offset, Quaternion.identity, transform);
         }
 
-        food1.GetComponent<Food>().Initialize(GameManager.Instance.P1.transform, InitialSpeed, RotationSpeed);
-        food2.GetComponent<Food>().Initialize(GameManager.Instance.P2.transform, InitialSpeed, RotationSpeed);
-        
+        if (GameManager.Instance != null) {
+            food1.GetComponent<Food>().Initialize(GameManager.Instance.P1.transform, InitialSpeed, RotationSpeed);
+            food2.GetComponent<Food>().Initialize(GameManager.Instance.P2.transform, InitialSpeed, RotationSpeed);
+        } else {
+            food1.GetComponent<Food>().Initialize(MenuManager.Instance.P1.transform, InitialSpeed, RotationSpeed);
+            food2.GetComponent<Food>().Initialize(MenuManager.Instance.P2.transform, InitialSpeed, RotationSpeed);
+        }
+
     }
 }

@@ -74,6 +74,8 @@ public class Rabbit : MonoBehaviour {
             if (Random.value < 0.2f) {
                 LoveEffect.SetActive(true);
             }
+        } else {
+            LoveEffect.SetActive(true);
         }
         RunTo(GameManager.Instance.GetPlayer(pNo), useEffect);
         Utilities.Audio.PlayAudio(audioSource, CaughtClips[Random.Range(0, CaughtClips.Length)]);
