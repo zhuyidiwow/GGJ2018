@@ -5,7 +5,8 @@ using UnityEngine;
 public class Food : MonoBehaviour {
     public enum EFood {
         SHIT,
-        CARROT
+        CARROT,
+        GIANT_CARROT
     }
 
     public EFood FoodEnum;
@@ -76,7 +77,7 @@ public class Food : MonoBehaviour {
     }
 
     public void Eat() {
-        Destroy(gameObject);
+        if (FoodEnum != EFood.GIANT_CARROT) Destroy(gameObject);
     }
 
     public bool IsCaught() {

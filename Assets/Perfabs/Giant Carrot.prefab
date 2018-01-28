@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e342f8edcc8dcd94b9b511b7cb774e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodEnum: 1
+  FoodEnum: 2
   MoveSpeed: 4
   RotateSpeed: 3
   ShootSpeed: 6

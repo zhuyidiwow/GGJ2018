@@ -39,11 +39,14 @@ public class Rabbit : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (isHit || !isReady) return;
         
-        if (other.gameObject.CompareTag("Food")) {
+        if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Giant Carrot")) {
             Food incomingFood = other.GetComponent<Food>();
 
             switch (incomingFood.FoodEnum) {
                 case Food.EFood.CARROT:
+                    Love(incomingFood.GetPlayerNo());
+                    break;
+                case Food.EFood.GIANT_CARROT:
                     Love(incomingFood.GetPlayerNo());
                     break;
                 case Food.EFood.SHIT:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Field : MonoBehaviour {
 
 	public GameObject GiantCarrotPrefab;
+	public Player Player;
 	private int CarrotCount;
 	
 	public void GrowOne() {
@@ -41,9 +42,8 @@ public class Field : MonoBehaviour {
 		GameObject giant = Instantiate(GiantCarrotPrefab, transform.position, transform.rotation);
 		giant.transform.parent = null;
 		
-		Debug.Log(giant.name + " parent set to: " + giant.transform.parent);
 		giant.transform.localScale = 0.5f * Vector3.one;
-		StartCoroutine(PopCoroutine(giant));
+		StartCoroutine(GiantCarrotCoroutine(giant));
 		
 		CarrotCount = 0;
 		foreach (CarrotSlot carrotSlot in GetComponentsInChildren<CarrotSlot>()) {
@@ -51,21 +51,23 @@ public class Field : MonoBehaviour {
 		}
 	}
 	
-	private IEnumerator PopCoroutine(GameObject objectToPop) {
-		Vector3 originalScale = objectToPop.transform.localScale;
+	private IEnumerator GiantCarrotCoroutine(GameObject giant) {
+		Vector3 originalScale = giant.transform.localScale;
 		float elapsedTime = 0f;
 		while (elapsedTime < 0.4f) {
-			objectToPop.transform.localScale = Vector3.Lerp(Vector3.zero, 1.3f * originalScale, elapsedTime / 0.4f);
+			giant.transform.localScale = Vector3.Lerp(Vector3.zero, 1.3f * originalScale, elapsedTime / 0.4f);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
 
 		elapsedTime = 0f;
 		while (elapsedTime < 0.2f) {
-			objectToPop.transform.localScale = Vector3.Lerp(1.3f * originalScale, originalScale, elapsedTime / 0.2f);
+			giant.transform.localScale = Vector3.Lerp(1.3f * originalScale, originalScale, elapsedTime / 0.2f);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
+		
+		giant.GetComponent<Food>().Initialize(Player.transform, 4f, 3f);
 	}
 	
 	

@@ -643,6 +643,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &565744858 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114454684423051334, guid: 2b266df2b3b34534b808ec5218c21556,
+    type: 2}
+  m_PrefabInternal: {fileID: 1887442221}
+  m_Script: {fileID: 11500000, guid: 55c42caf4498f454eab2fa8a591684d4, type: 3}
 --- !u!1 &576309859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GiantCarrotPrefab: {fileID: 1095967326368540, guid: b6cbc9bde13fb4344965dd49521857b3,
     type: 2}
+  Player: {fileID: 565744858}
 --- !u!4 &1011151648
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,7 +1657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1641468501516196, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 114454684423051334, guid: 2b266df2b3b34534b808ec5218c21556,
         type: 2}
@@ -2278,6 +2285,10 @@ Prefab:
         type: 2}
       propertyPath: Distance
       value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641468501516196, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}
+      propertyPath: m_Name
+      value: Player 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b266df2b3b34534b808ec5218c21556, type: 2}

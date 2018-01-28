@@ -17,7 +17,7 @@ public class Slot : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		
-		if (other.gameObject.CompareTag("Food")) {
+		if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Giant Carrot")) {
 			Food incomingFood = other.GetComponent<Food>();
 			if (IsHoldingFood) {
 				incomingFood.Drop(player.GetPlayerNo());
