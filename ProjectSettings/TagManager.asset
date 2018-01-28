@@ -61,3 +61,6 @@ TagManager:
   - name: Animals
     uniqueID: 1616274893
     locked: 0
+  - name: Overlay
+    uniqueID: 394393453
+    locked: 0

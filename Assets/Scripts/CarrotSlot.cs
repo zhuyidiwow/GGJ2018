@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class CarrotSlot : MonoBehaviour {
@@ -7,7 +8,8 @@ public class CarrotSlot : MonoBehaviour {
     public GameObject YellForShitSign;
     public GameObject DisappointSign;
     public GameObject HappySign;
-
+    public Image Ring;
+    
     [HideInInspector] public Food Carrot = null;
     
     private GameObject currentSign;
@@ -21,6 +23,7 @@ public class CarrotSlot : MonoBehaviour {
         YellForShitSign.SetActive(false);
         DisappointSign.SetActive(false);
         HappySign.SetActive(false);
+        Ring.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -47,7 +50,10 @@ public class CarrotSlot : MonoBehaviour {
                     if (Carrot != null && !isGone) {
                         isGrown = true;
                         Carrot.transform.localScale *= 1.4f;
-                        if (destroyCoroutine != null) StopCoroutine(destroyCoroutine);
+                        if (destroyCoroutine != null) {
+                            StopCoroutine(destroyCoroutine);
+                            Ring.gameObject.SetActive(false);    
+                        }
                         showSignCoroutine = StartCoroutine(ShowSign(HappySign));
                     }
                     break;
@@ -58,7 +64,10 @@ public class CarrotSlot : MonoBehaviour {
     }
 
     public void ResetSlot() {
-        if (destroyCoroutine != null) StopCoroutine(destroyCoroutine);
+        if (destroyCoroutine != null) {
+            StopCoroutine(destroyCoroutine);
+            Ring.gameObject.SetActive(false);
+        }
         if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
         YellForShitSign.SetActive(false);
         DisappointSign.SetActive(false);
@@ -76,8 +85,18 @@ public class CarrotSlot : MonoBehaviour {
     }
 
     private IEnumerator DestroyCoroutine() {
+        yield return new WaitForSeconds(0.6f);
+        Ring.gameObject.SetActive(true);
+        float elapsedTime = 0.6f;
+        while (elapsedTime < CarrotStayTime) {
+            float percentage = elapsedTime / CarrotStayTime;
+            Ring.fillAmount = 1f - percentage;
+            Ring.color = Color.Lerp(Color.green, Color.red, percentage);
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
+        Ring.gameObject.SetActive(false);
         
-        yield return new WaitForSeconds(CarrotStayTime);
         isGone = true;
         if (showSignCoroutine != null) StopCoroutine(showSignCoroutine);
         showSignCoroutine = StartCoroutine(ShowSign(DisappointSign));
@@ -87,6 +106,7 @@ public class CarrotSlot : MonoBehaviour {
         yield return new WaitForSeconds(0.3f);
         Destroy(Carrot.gameObject);
         Carrot = null;
+        
     }
 
     private IEnumerator ShowSign(GameObject Sign, float duration1 = 0.4f, float duration2 = 0.2f, float largeScale = 1.4f) {
@@ -127,6 +147,8 @@ public class CarrotSlot : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        if (O != currentSign) currentSign = null;
         O.SetActive(false);
     }
 }
